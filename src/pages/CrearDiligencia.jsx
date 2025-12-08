@@ -30,7 +30,7 @@ function CrearDiligencia() {
   }
 
   const calcularPrecioEstimado = () => {
-    let precioBase = 10000
+    let precioBase = 200
     const multiplicadores = {
       'normal': 1,
       'urgente': 1.5,
@@ -197,7 +197,7 @@ function CrearDiligencia() {
 
         <div className="crear-diligencia__field">
           <label htmlFor="precio" className="crear-diligencia__label">
-            Precio Estimado (COP)
+            Precio Estimado (MXN)
           </label>
           <input
             type="number"

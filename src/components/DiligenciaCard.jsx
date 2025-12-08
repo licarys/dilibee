@@ -54,7 +54,7 @@ function DiligenciaCard({ diligencia }) {
         </div>
         <div className="diligencia-card__campo">
           <span className="diligencia-card__label">Precio:</span>
-          <span className="diligencia-card__precio">${diligencia.precio.toLocaleString()}</span>
+          <span className="diligencia-card__precio">${diligencia.precio.toLocaleString('es-MX')} MXN</span>
         </div>
       </div>
 

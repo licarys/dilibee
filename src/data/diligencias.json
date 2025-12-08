@@ -8,7 +8,7 @@
     "puntoDestino": "Oficina Legal, Calle 456, Centro",
     "estado": "pendiente",
     "urgencia": "urgente",
-    "precio": 25000,
+    "precio": 350,
     "fechaCreacion": "2024-01-20",
     "usuario": {
       "id": 1,
@@ -25,7 +25,7 @@
     "puntoDestino": "Calle 321, Zona Sur",
     "estado": "en-progreso",
     "urgencia": "normal",
-    "precio": 15000,
+    "precio": 200,
     "fechaCreacion": "2024-01-19",
     "usuario": {
       "id": 2,
@@ -48,7 +48,7 @@
     "puntoDestino": "Banco Nacional, Sucursal Centro",
     "estado": "completada",
     "urgencia": "normal",
-    "precio": 12000,
+    "precio": 180,
     "fechaCreacion": "2024-01-15",
     "usuario": {
       "id": 3,
@@ -70,7 +70,7 @@
     "puntoDestino": "Farmacia Central, Avenida Principal",
     "estado": "pendiente",
     "urgencia": "muy-urgente",
-    "precio": 18000,
+    "precio": 450,
     "fechaCreacion": "2024-01-21",
     "usuario": {
       "id": 4,
@@ -87,7 +87,7 @@
     "puntoDestino": "Oficina de Tránsito, Zona Este",
     "estado": "en-progreso",
     "urgencia": "urgente",
-    "precio": 30000,
+    "precio": 550,
     "fechaCreacion": "2024-01-20",
     "usuario": {
       "id": 5,

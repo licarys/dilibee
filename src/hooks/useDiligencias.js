@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { apiService } from '../utils/api'
 
 function useDiligencias(estado = 'todas') {
@@ -6,11 +6,7 @@ function useDiligencias(estado = 'todas') {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
-  useEffect(() => {
-    loadDiligencias()
-  }, [estado])
-
-  const loadDiligencias = async () => {
+  const loadDiligencias = useCallback(async () => {
     setLoading(true)
     setError('')
     try {
@@ -28,7 +24,11 @@ function useDiligencias(estado = 'todas') {
     } finally {
       setLoading(false)
     }
-  }
+  }, [estado])
+
+  useEffect(() => {
+    loadDiligencias()
+  }, [loadDiligencias])
 
   const crearDiligencia = async (diligenciaData) => {
     setLoading(true)
