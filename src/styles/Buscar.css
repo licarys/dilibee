@@ -1,0 +1,52 @@
+.buscar {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.buscar__title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.buscar__form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.buscar__input {
+  flex: 1;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.buscar__button {
+  padding: 0.75rem 2rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.buscar__button:hover {
+  background-color: #45a049;
+}
+
+.buscar__results {
+  min-height: 200px;
+}
+
+.buscar__empty {
+  text-align: center;
+  color: #666;
+  padding: 2rem;
+}
+

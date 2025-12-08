@@ -1,0 +1,134 @@
+.home {
+  padding: 2rem;
+}
+
+.home__hero {
+  text-align: center;
+  padding: 3rem 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.home__title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.home__subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #666;
+}
+
+.home__description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.home__actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.home__button {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+.home__button:hover {
+  transform: translateY(-2px);
+}
+
+.home__button--primary {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.home__button--secondary {
+  background-color: #2196F3;
+  color: white;
+}
+
+.home__stats {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 3rem 0;
+  padding: 2rem;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+
+.home__stat {
+  text-align: center;
+  min-width: 150px;
+}
+
+.home__stat-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #4CAF50;
+  margin-bottom: 0.5rem;
+}
+
+.home__stat-label {
+  font-size: 1rem;
+  color: #666;
+}
+
+.home__features {
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 2rem;
+}
+
+.home__features-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.home__features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.home__feature {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.home__feature-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.home__feature-title {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.home__feature-text {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+}
+

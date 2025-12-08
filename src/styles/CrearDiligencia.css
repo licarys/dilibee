@@ -1,0 +1,59 @@
+.crear-diligencia {
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.crear-diligencia__title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.crear-diligencia__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.crear-diligencia__field {
+  display: flex;
+  flex-direction: column;
+}
+
+.crear-diligencia__label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.crear-diligencia__input,
+.crear-diligencia__textarea,
+.crear-diligencia__select {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: inherit;
+}
+
+.crear-diligencia__textarea {
+  resize: vertical;
+}
+
+.crear-diligencia__submit {
+  padding: 1rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.crear-diligencia__submit:hover {
+  background-color: #45a049;
+}
+

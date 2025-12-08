@@ -1,0 +1,94 @@
+.historial {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.historial__title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.historial__filtros {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.historial__filtro {
+  padding: 0.5rem 1.5rem;
+  border: 2px solid #ddd;
+  background-color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.historial__filtro:hover {
+  border-color: #4CAF50;
+}
+
+.historial__filtro--active {
+  background-color: #4CAF50;
+  color: white;
+  border-color: #4CAF50;
+}
+
+.historial__lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.historial__item {
+  padding: 1.5rem;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.historial__item-titulo {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.historial__item-gestor,
+.historial__item-fecha {
+  margin-bottom: 0.5rem;
+  color: #666;
+}
+
+.historial__item-estado {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.historial__item-estado--completada {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.historial__item-estado--en-progreso {
+  background-color: #FF9800;
+  color: white;
+}
+
+.historial__item-estado--pendiente {
+  background-color: #2196F3;
+  color: white;
+}
+
+.historial__empty {
+  text-align: center;
+  color: #666;
+  padding: 3rem;
+}
+
