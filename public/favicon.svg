@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Cuerpo de la abeja (amarillo) -->
+  <ellipse cx="50" cy="50" rx="25" ry="30" fill="#FFC727"/>
+  
+  <!-- Rayas negras de la abeja -->
+  <rect x="38" y="35" width="24" height="8" fill="#1A1A1A"/>
+  <rect x="38" y="48" width="24" height="8" fill="#1A1A1A"/>
+  <rect x="38" y="61" width="24" height="8" fill="#1A1A1A"/>
+  
+  <!-- Cabeza -->
+  <circle cx="50" cy="28" r="12" fill="#FFC727"/>
+  
+  <!-- Ojos -->
+  <circle cx="46" cy="26" r="2.5" fill="#1A1A1A"/>
+  <circle cx="54" cy="26" r="2.5" fill="#1A1A1A"/>
+  
+  <!-- Alas -->
+  <ellipse cx="35" cy="45" rx="8" ry="12" fill="rgba(255,255,255,0.7)"/>
+  <ellipse cx="65" cy="45" rx="8" ry="12" fill="rgba(255,255,255,0.7)"/>
+  
+  <!-- Antenas -->
+  <line x1="48" y1="20" x2="44" y2="14" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="52" y1="20" x2="56" y2="14" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="44" cy="14" r="1.5" fill="#1A1A1A"/>
+  <circle cx="56" cy="14" r="1.5" fill="#1A1A1A"/>
+  
+  <!-- Aguijón -->
+  <path d="M 50 80 L 48 88 L 52 88 Z" fill="#1A1A1A"/>
+</svg>
+
