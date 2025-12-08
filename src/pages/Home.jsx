@@ -20,6 +20,12 @@ function Home() {
 
   return (
     <div className="home">
+      {/* Elementos decorativos animados */}
+      <div className="home__decoration home__decoration--1">🐝</div>
+      <div className="home__decoration home__decoration--2">🚀</div>
+      <div className="home__decoration home__decoration--3">📦</div>
+      <div className="home__decoration home__decoration--4">✓</div>
+      
       <section className="home__hero">
         <h1 className="home__title">DiliBee</h1>
         <p className="home__subtitle">Diligencias rápidas a tu alcance</p>

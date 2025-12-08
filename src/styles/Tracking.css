@@ -1,5 +1,5 @@
 .tracking {
-  background-color: white;
+  background-color: var(--soft-white);
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 2rem;
@@ -35,8 +35,8 @@
 }
 
 .tracking__estado-badge--completada {
-  background-color: #4CAF50;
-  color: white;
+  background-color: var(--mint-green);
+  color: var(--carbon-black);
 }
 
 .tracking__progreso {
@@ -107,8 +107,8 @@
 }
 
 .tracking__step--completed .tracking__step-icon {
-  background-color: #4CAF50;
-  color: white;
+  background-color: var(--mint-green);
+  color: var(--carbon-black);
 }
 
 .tracking__step-label {

@@ -1,6 +1,6 @@
 .footer {
-  background-color: #333;
-  color: #fff;
+  background-color: var(--carbon-black);
+  color: var(--soft-white);
   margin-top: 4rem;
   padding: 3rem 2rem 1rem;
 }
@@ -22,19 +22,24 @@
 .footer__title {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #4CAF50;
+  color: var(--bee-yellow);
+  font-family: var(--font-heading);
+  font-weight: 800;
 }
 
 .footer__subtitle {
   font-size: 1.1rem;
   margin-bottom: 1rem;
-  color: #fff;
+  color: var(--soft-white);
+  font-family: var(--font-heading);
+  font-weight: 700;
 }
 
 .footer__description {
-  color: #ccc;
+  color: rgba(255, 255, 255, 0.8);
   line-height: 1.6;
   font-size: 0.9rem;
+  font-family: var(--font-body);
 }
 
 .footer__links {
@@ -48,14 +53,15 @@
 }
 
 .footer__link {
-  color: #ccc;
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   transition: color 0.2s;
   font-size: 0.9rem;
+  font-family: var(--font-body);
 }
 
 .footer__link:hover {
-  color: #4CAF50;
+  color: var(--bee-yellow);
 }
 
 .footer__social {
@@ -81,8 +87,9 @@
 }
 
 .footer__copyright {
-  color: #ccc;
+  color: rgba(255, 255, 255, 0.8);
   font-size: 0.9rem;
+  font-family: var(--font-body);
   margin: 0;
 }
 

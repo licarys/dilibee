@@ -1,3 +1,17 @@
+:root {
+  /* DiliBee Brand Colors */
+  --bee-yellow: #FFC727;
+  --honey-gold: #FFB300;
+  --carbon-black: #1A1A1A;
+  --soft-white: #FFFFFF;
+  --mint-green: #A6F2C0;
+  --sky-honey: #F7F3E9;
+  
+  /* Typography */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Nunito', sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,11 +19,17 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-body);
+  color: var(--carbon-black);
+  background-color: var(--sky-honey);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--carbon-black);
 }
 
 #root {

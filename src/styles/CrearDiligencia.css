@@ -8,7 +8,9 @@
   text-align: center;
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: #333;
+  color: var(--carbon-black);
+  font-family: var(--font-heading);
+  font-weight: 800;
 }
 
 .crear-diligencia__form {
@@ -24,8 +26,9 @@
 
 .crear-diligencia__label {
   margin-bottom: 0.5rem;
-  font-weight: bold;
-  color: #333;
+  font-weight: 600;
+  font-family: var(--font-body);
+  color: var(--carbon-black);
 }
 
 .crear-diligencia__input,
@@ -33,9 +36,19 @@
 .crear-diligencia__select {
   padding: 0.75rem;
   font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-family: inherit;
+  border: 2px solid var(--sky-honey);
+  border-radius: 15px;
+  font-family: var(--font-body);
+  background-color: var(--soft-white);
+  color: var(--carbon-black);
+}
+
+.crear-diligencia__input:focus,
+.crear-diligencia__textarea:focus,
+.crear-diligencia__select:focus {
+  outline: none;
+  border-color: var(--bee-yellow);
+  box-shadow: 0 0 0 3px rgba(255, 199, 39, 0.1);
 }
 
 .crear-diligencia__textarea {
@@ -44,17 +57,22 @@
 
 .crear-diligencia__submit {
   padding: 1rem;
-  background-color: #4CAF50;
-  color: white;
+  background-color: var(--bee-yellow);
+  color: var(--carbon-black);
   border: none;
-  border-radius: 5px;
+  border-radius: 25px;
   font-size: 1.1rem;
+  font-family: var(--font-body);
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(26, 26, 26, 0.15);
 }
 
 .crear-diligencia__submit:hover:not(:disabled) {
-  background-color: #45a049;
+  background-color: var(--honey-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(26, 26, 26, 0.2);
 }
 
 .crear-diligencia__submit:disabled {
@@ -66,26 +84,29 @@
   display: block;
   margin-top: 0.25rem;
   font-size: 0.85rem;
-  color: #888;
+  color: var(--carbon-black);
   font-style: italic;
+  font-family: var(--font-body);
+  opacity: 0.7;
 }
 
 .crear-diligencia__message {
   padding: 1rem;
-  border-radius: 5px;
+  border-radius: 15px;
   margin-bottom: 1rem;
-  font-weight: 500;
+  font-weight: 600;
+  font-family: var(--font-body);
 }
 
 .crear-diligencia__message--error {
   background-color: #ffebee;
   color: #c62828;
-  border: 1px solid #ef5350;
+  border: 2px solid #ef5350;
 }
 
 .crear-diligencia__message--success {
-  background-color: #e8f5e9;
-  color: #2e7d32;
-  border: 1px solid #4caf50;
+  background-color: var(--mint-green);
+  color: var(--carbon-black);
+  border: 2px solid var(--mint-green);
 }
 

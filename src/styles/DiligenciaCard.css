@@ -1,15 +1,16 @@
 .diligencia-card {
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+  background-color: var(--soft-white);
+  border: 2px solid var(--sky-honey);
+  border-radius: 25px;
   padding: 1.5rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(26, 26, 26, 0.1);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .diligencia-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px rgba(26, 26, 26, 0.15);
+  border-color: var(--bee-yellow);
 }
 
 .diligencia-card__header {
@@ -21,7 +22,9 @@
 
 .diligencia-card__titulo {
   font-size: 1.2rem;
-  color: #333;
+  color: var(--carbon-black);
+  font-family: var(--font-heading);
+  font-weight: 700;
   margin: 0;
   flex: 1;
 }
@@ -30,29 +33,32 @@
   padding: 0.25rem 0.75rem;
   border-radius: 15px;
   font-size: 0.85rem;
-  font-weight: bold;
+  font-family: var(--font-body);
+  font-weight: 600;
   text-transform: capitalize;
 }
 
 .diligencia-card__estado--pendiente {
-  background-color: #2196F3;
-  color: white;
+  background-color: var(--honey-gold);
+  color: var(--soft-white);
 }
 
 .diligencia-card__estado--en-progreso {
   background-color: #FF9800;
-  color: white;
+  color: var(--soft-white);
 }
 
 .diligencia-card__estado--completada {
-  background-color: #4CAF50;
-  color: white;
+  background-color: var(--mint-green);
+  color: var(--carbon-black);
 }
 
 .diligencia-card__descripcion {
-  color: #666;
+  color: var(--carbon-black);
+  font-family: var(--font-body);
   margin-bottom: 1rem;
   line-height: 1.5;
+  opacity: 0.8;
 }
 
 .diligencia-card__info {
@@ -61,8 +67,8 @@
   gap: 1rem;
   margin-bottom: 1rem;
   padding: 1rem;
-  background-color: #f9f9f9;
-  border-radius: 5px;
+  background-color: var(--sky-honey);
+  border-radius: 15px;
 }
 
 .diligencia-card__campo {
@@ -73,19 +79,23 @@
 
 .diligencia-card__label {
   font-size: 0.85rem;
-  color: #888;
-  font-weight: bold;
+  color: var(--carbon-black);
+  font-family: var(--font-body);
+  font-weight: 600;
+  opacity: 0.7;
 }
 
 .diligencia-card__valor {
   font-size: 0.95rem;
-  color: #333;
+  color: var(--carbon-black);
+  font-family: var(--font-body);
 }
 
 .diligencia-card__precio {
   font-size: 1.1rem;
-  font-weight: bold;
-  color: #4CAF50;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  color: var(--honey-gold);
 }
 
 .diligencia-card__ubicaciones {
@@ -102,13 +112,16 @@
 }
 
 .diligencia-card__ubicacion-label {
-  font-weight: bold;
-  color: #555;
+  font-weight: 600;
+  font-family: var(--font-body);
+  color: var(--carbon-black);
   min-width: 80px;
 }
 
 .diligencia-card__ubicacion-texto {
-  color: #666;
+  color: var(--carbon-black);
+  font-family: var(--font-body);
+  opacity: 0.8;
   flex: 1;
 }
 
@@ -121,14 +134,16 @@
 }
 
 .diligencia-card__gestor-label {
-  font-weight: bold;
-  color: #555;
+  font-weight: 600;
+  font-family: var(--font-body);
+  color: var(--carbon-black);
   font-size: 0.9rem;
 }
 
 .diligencia-card__gestor-nombre {
-  color: #4CAF50;
-  font-weight: 500;
+  color: var(--honey-gold);
+  font-weight: 600;
+  font-family: var(--font-body);
 }
 
 .diligencia-card__actions {
@@ -139,19 +154,23 @@
 
 .diligencia-card__button {
   display: inline-block;
-  padding: 0.5rem 1rem;
-  background-color: #2196F3;
-  color: white;
+  padding: 0.75rem 1rem;
+  background-color: var(--bee-yellow);
+  color: var(--carbon-black);
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 20px;
   font-size: 0.9rem;
+  font-family: var(--font-body);
+  font-weight: 600;
   text-align: center;
-  transition: background-color 0.2s;
+  transition: all 0.3s;
   width: 100%;
-  text-align: center;
+  box-shadow: 0 2px 8px rgba(26, 26, 26, 0.1);
 }
 
 .diligencia-card__button:hover {
-  background-color: #1976D2;
+  background-color: var(--honey-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26, 26, 26, 0.15);
 }
 

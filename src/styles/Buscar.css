@@ -8,7 +8,9 @@
   text-align: center;
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: #333;
+  color: var(--carbon-black);
+  font-family: var(--font-heading);
+  font-weight: 800;
 }
 
 .buscar__form {
@@ -22,8 +24,17 @@
   width: 100%;
   padding: 0.75rem;
   font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  font-family: var(--font-body);
+  border: 2px solid var(--sky-honey);
+  border-radius: 15px;
+  background-color: var(--soft-white);
+  color: var(--carbon-black);
+}
+
+.buscar__input:focus {
+  outline: none;
+  border-color: var(--bee-yellow);
+  box-shadow: 0 0 0 3px rgba(255, 199, 39, 0.1);
 }
 
 .buscar__actions {
@@ -34,19 +45,24 @@
 
 .buscar__button {
   padding: 0.75rem 2rem;
-  background-color: #4CAF50;
-  color: white;
+  background-color: var(--bee-yellow);
+  color: var(--carbon-black);
   border: none;
-  border-radius: 5px;
+  border-radius: 25px;
   font-size: 1rem;
+  font-family: var(--font-body);
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.3s;
   flex: 1;
   min-width: 150px;
+  box-shadow: 0 4px 15px rgba(26, 26, 26, 0.15);
 }
 
 .buscar__button:hover:not(:disabled) {
-  background-color: #45a049;
+  background-color: var(--honey-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(26, 26, 26, 0.2);
 }
 
 .buscar__button:disabled {
@@ -55,18 +71,21 @@
 }
 
 .buscar__button--secondary {
-  background-color: #2196F3;
+  background-color: var(--soft-white);
+  color: var(--carbon-black);
+  border: 2px solid var(--carbon-black);
 }
 
 .buscar__button--secondary:hover:not(:disabled) {
-  background-color: #1976D2;
+  background-color: var(--carbon-black);
+  color: var(--soft-white);
 }
 
 .buscar__tabs {
   display: flex;
   gap: 0.5rem;
   margin-bottom: 2rem;
-  border-bottom: 2px solid #eee;
+  border-bottom: 2px solid var(--sky-honey);
   flex-wrap: wrap;
 }
 
@@ -76,20 +95,25 @@
   border: none;
   border-bottom: 3px solid transparent;
   font-size: 1rem;
+  font-family: var(--font-body);
+  font-weight: 600;
   cursor: pointer;
-  color: #666;
-  transition: color 0.2s, border-color 0.2s;
+  color: var(--carbon-black);
+  opacity: 0.7;
+  transition: color 0.2s, border-color 0.2s, opacity 0.2s;
   margin-bottom: -2px;
 }
 
 .buscar__tab:hover {
-  color: #4CAF50;
+  color: var(--honey-gold);
+  opacity: 1;
 }
 
 .buscar__tab--active {
-  color: #4CAF50;
-  border-bottom-color: #4CAF50;
-  font-weight: bold;
+  color: var(--honey-gold);
+  border-bottom-color: var(--honey-gold);
+  font-weight: 700;
+  opacity: 1;
 }
 
 .buscar__results {
@@ -99,9 +123,11 @@
 .buscar__loading,
 .buscar__empty {
   text-align: center;
-  color: #666;
+  color: var(--carbon-black);
+  font-family: var(--font-body);
   padding: 3rem;
   font-size: 1.1rem;
+  opacity: 0.7;
 }
 
 .buscar__section {
@@ -110,10 +136,12 @@
 
 .buscar__section-title {
   font-size: 1.5rem;
-  color: #333;
+  color: var(--carbon-black);
+  font-family: var(--font-heading);
+  font-weight: 700;
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #4CAF50;
+  border-bottom: 2px solid var(--bee-yellow);
 }
 
 .buscar__grid {

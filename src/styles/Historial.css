@@ -8,7 +8,9 @@
   text-align: center;
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: #333;
+  color: var(--carbon-black);
+  font-family: var(--font-heading);
+  font-weight: 800;
 }
 
 .historial__filtros {
@@ -21,7 +23,7 @@
 .historial__filtro {
   padding: 0.5rem 1.5rem;
   border: 2px solid #ddd;
-  background-color: white;
+  background-color: var(--soft-white);
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.2s;
@@ -32,9 +34,9 @@
 }
 
 .historial__filtro--active {
-  background-color: #4CAF50;
-  color: white;
-  border-color: #4CAF50;
+  background-color: var(--bee-yellow);
+  color: var(--carbon-black);
+  border-color: var(--bee-yellow);
 }
 
 .historial__lista {
@@ -63,7 +65,9 @@
 
 .historial__empty {
   text-align: center;
-  color: #666;
+  color: var(--carbon-black);
+  font-family: var(--font-body);
+  opacity: 0.7;
   padding: 3rem;
   font-size: 1.1rem;
 }
