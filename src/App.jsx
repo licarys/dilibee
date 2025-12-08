@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Header from './components/Header'
+import Footer from './components/Footer'
 import Home from './pages/Home'
 import Buscar from './pages/Buscar'
 import CrearDiligencia from './pages/CrearDiligencia'
@@ -10,13 +12,17 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/buscar" element={<Buscar />} />
-          <Route path="/crear-diligencia" element={<CrearDiligencia />} />
-          <Route path="/historial" element={<Historial />} />
-          <Route path="/perfil" element={<Perfil />} />
-        </Routes>
+        <Header />
+        <main className="app__main">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/buscar" element={<Buscar />} />
+            <Route path="/crear-diligencia" element={<CrearDiligencia />} />
+            <Route path="/historial" element={<Historial />} />
+            <Route path="/perfil" element={<Perfil />} />
+          </Routes>
+        </main>
+        <Footer />
       </div>
     </Router>
   )
