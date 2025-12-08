@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import StatCard from '../components/StatCard'
+import ServiceCard from '../components/ServiceCard'
+import TestimonialCard from '../components/TestimonialCard'
+import serviciosData from '../data/servicios.json'
+import testimoniosData from '../data/testimonios.json'
 import '../styles/Home.css'
 
 function Home() {
@@ -96,6 +100,37 @@ function Home() {
               Realiza el pago seguro y califica el servicio recibido
             </p>
           </div>
+        </div>
+      </section>
+
+      <section className="home__services">
+        <h2 className="home__section-title">Servicios Populares</h2>
+        <div className="home__services-grid">
+          {serviciosData.map(servicio => (
+            <ServiceCard
+              key={servicio.id}
+              icon={servicio.icon}
+              title={servicio.title}
+              description={servicio.description}
+              popular={servicio.popular}
+            />
+          ))}
+        </div>
+      </section>
+
+      <section className="home__testimonials">
+        <h2 className="home__section-title">Lo que Dicen Nuestros Usuarios</h2>
+        <div className="home__testimonials-grid">
+          {testimoniosData.map(testimonio => (
+            <TestimonialCard
+              key={testimonio.id}
+              name={testimonio.name}
+              role={testimonio.role}
+              avatar={testimonio.avatar}
+              rating={testimonio.rating}
+              comment={testimonio.comment}
+            />
+          ))}
         </div>
       </section>
     </div>

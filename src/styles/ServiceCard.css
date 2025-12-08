@@ -1,0 +1,59 @@
+.service-card {
+  position: relative;
+  background-color: var(--soft-white);
+  border-radius: 25px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(26, 26, 26, 0.1);
+  transition: all 0.3s ease;
+  border: 2px solid var(--sky-honey);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(26, 26, 26, 0.15);
+  border-color: var(--bee-yellow);
+}
+
+.service-card--popular {
+  border-color: var(--bee-yellow);
+  background: linear-gradient(135deg, var(--soft-white) 0%, rgba(255, 199, 39, 0.05) 100%);
+}
+
+.service-card__badge {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background-color: var(--bee-yellow);
+  color: var(--carbon-black);
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(26, 26, 26, 0.15);
+}
+
+.service-card__icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.service-card__title {
+  font-size: 1.3rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--carbon-black);
+  margin-bottom: 0.75rem;
+}
+
+.service-card__description {
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  color: var(--carbon-black);
+  opacity: 0.7;
+  line-height: 1.6;
+  margin: 0;
+}
+

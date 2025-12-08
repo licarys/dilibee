@@ -375,3 +375,52 @@
   font-weight: 400;
 }
 
+.home__section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--carbon-black);
+  font-family: var(--font-heading);
+  font-weight: 800;
+}
+
+.home__services {
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+  padding: 3rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.home__services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.home__testimonials {
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+  padding: 3rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.home__testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .home__services-grid,
+  .home__testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .home__section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+

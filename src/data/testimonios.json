@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "name": "Carlos Mendoza",
+    "role": "Empresario",
+    "avatar": "👨‍💼",
+    "rating": 5,
+    "comment": "DiliBee me ha ahorrado horas de trabajo. Sus gestores son puntuales y confiables. ¡Excelente servicio!"
+  },
+  {
+    "id": 2,
+    "name": "Ana García",
+    "role": "Estudiante",
+    "avatar": "👩‍🎓",
+    "rating": 5,
+    "comment": "Como estudiante, no tengo tiempo para hacer trámites. DiliBee siempre me ayuda cuando lo necesito."
+  },
+  {
+    "id": 3,
+    "name": "María Rodríguez",
+    "role": "Mamá",
+    "avatar": "👩",
+    "rating": 5,
+    "comment": "Con dos niños pequeños, hacer filas es imposible. DiliBee ha sido un salvavidas para mí."
+  },
+  {
+    "id": 4,
+    "name": "Luis Hernández",
+    "role": "Profesional",
+    "avatar": "👨",
+    "rating": 5,
+    "comment": "El servicio de seguimiento en tiempo real es genial. Siempre sé dónde está mi diligencia."
+  },
+  {
+    "id": 5,
+    "name": "Sofía Martínez",
+    "role": "Empresaria",
+    "avatar": "👩‍💼",
+    "rating": 5,
+    "comment": "Usamos DiliBee para las diligencias de nuestra empresa. Rápido, eficiente y económico."
+  }
+]
+

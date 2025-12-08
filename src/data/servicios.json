@@ -1,0 +1,45 @@
+[
+  {
+    "id": 1,
+    "icon": "📦",
+    "title": "Entrega de Paquetes",
+    "description": "Envía y recibe paquetes pequeños de forma rápida y segura en toda la ciudad.",
+    "popular": true
+  },
+  {
+    "id": 2,
+    "icon": "📄",
+    "title": "Recoger Documentos",
+    "description": "Recogemos documentos importantes y los entregamos en el lugar que necesites.",
+    "popular": false
+  },
+  {
+    "id": 3,
+    "icon": "💳",
+    "title": "Pago de Trámites",
+    "description": "Realizamos pagos de servicios, facturas y trámites bancarios por ti.",
+    "popular": false
+  },
+  {
+    "id": 4,
+    "icon": "🛒",
+    "title": "Compra Urgente",
+    "description": "Hacemos compras urgentes en farmacias, supermercados o tiendas específicas.",
+    "popular": true
+  },
+  {
+    "id": 5,
+    "icon": "⏳",
+    "title": "Hacer Fila",
+    "description": "Evita las largas filas, nosotros esperamos por ti en oficinas y trámites.",
+    "popular": false
+  },
+  {
+    "id": 6,
+    "icon": "📋",
+    "title": "Otros Servicios",
+    "description": "Diligencias personalizadas según tus necesidades específicas.",
+    "popular": false
+  }
+]
+
