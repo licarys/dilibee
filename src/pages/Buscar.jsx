@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { apiService } from '../utils/api'
 import DiligenciaCard from '../components/DiligenciaCard'
 import GestorCard from '../components/GestorCard'
+import SearchBar from '../components/SearchBar'
 import '../styles/Buscar.css'
 
 function Buscar() {
@@ -11,17 +12,18 @@ function Buscar() {
   const [loading, setLoading] = useState(false)
   const [activeTab, setActiveTab] = useState('todos')
 
-  const handleSearch = async (e) => {
-    e.preventDefault()
+  const handleSearch = async (term) => {
+    const searchValue = term || searchTerm
+    setSearchTerm(searchValue)
     setLoading(true)
 
     try {
-      const term = searchTerm.trim()
+      const searchTermClean = searchValue.trim()
       
       // Buscar en ambas categorías simultáneamente
       const [diligenciasResponse, gestoresResponse] = await Promise.all([
-        apiService.searchDiligencias(term),
-        apiService.searchGestores(term)
+        apiService.searchDiligencias(searchTermClean),
+        apiService.searchGestores(searchTermClean)
       ])
 
       setDiligencias(diligenciasResponse.data || [])
@@ -58,28 +60,20 @@ function Buscar() {
     <div className="buscar">
       <h1 className="buscar__title">Buscar Gestores y Diligencias</h1>
       
-      <form className="buscar__form" onSubmit={handleSearch}>
-        <input
-          type="text"
-          className="buscar__input"
+      <div className="buscar__search-container">
+        <SearchBar
+          onSearch={handleSearch}
           placeholder="Buscar por zona, tipo de diligencia, gestor, título..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <div className="buscar__actions">
-          <button type="submit" className="buscar__button" disabled={loading}>
-            {loading ? 'Buscando...' : 'Buscar'}
-          </button>
-          <button 
-            type="button" 
-            className="buscar__button buscar__button--secondary"
-            onClick={handleInitialLoad}
-            disabled={loading}
-          >
-            Cargar Todos
-          </button>
-        </div>
-      </form>
+        <button 
+          type="button" 
+          className="buscar__button buscar__button--secondary"
+          onClick={handleInitialLoad}
+          disabled={loading}
+        >
+          Cargar Todos
+        </button>
+      </div>
 
       {hasResults && (
         <div className="buscar__tabs">

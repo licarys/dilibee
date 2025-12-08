@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import StatCard from '../components/StatCard'
 import '../styles/Home.css'
 
 function Home() {
@@ -44,18 +45,24 @@ function Home() {
       </section>
 
       <section className="home__stats">
-        <div className="home__stat">
-          <h3 className="home__stat-number">{stats.diligencias.toLocaleString()}+</h3>
-          <p className="home__stat-label">Diligencias completadas</p>
-        </div>
-        <div className="home__stat">
-          <h3 className="home__stat-number">{stats.gestores}+</h3>
-          <p className="home__stat-label">Gestores activos</p>
-        </div>
-        <div className="home__stat">
-          <h3 className="home__stat-number">⭐ {stats.satisfaccion}</h3>
-          <p className="home__stat-label">Calificación promedio</p>
-        </div>
+        <StatCard
+          icon="📋"
+          number={`${stats.diligencias.toLocaleString()}+`}
+          label="Diligencias completadas"
+          color="gold"
+        />
+        <StatCard
+          icon="👥"
+          number={`${stats.gestores}+`}
+          label="Gestores activos"
+          color="gold"
+        />
+        <StatCard
+          icon="⭐"
+          number={stats.satisfaccion}
+          label="Calificación promedio"
+          color="gold"
+        />
       </section>
 
       <section className="home__features">

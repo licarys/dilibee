@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Badge from './Badge'
 import '../styles/DiligenciaCard.css'
 
 function DiligenciaCard({ diligencia }) {
@@ -36,9 +37,12 @@ function DiligenciaCard({ diligencia }) {
     <div className="diligencia-card">
       <div className="diligencia-card__header">
         <h3 className="diligencia-card__titulo">{diligencia.titulo}</h3>
-        <span className={`diligencia-card__estado ${getEstadoClass(diligencia.estado)}`}>
+        <Badge 
+          variant={diligencia.estado === 'completada' ? 'success' : diligencia.estado === 'en-progreso' ? 'warning' : 'info'}
+          size="small"
+        >
           {diligencia.estado.replace('-', ' ')}
-        </span>
+        </Badge>
       </div>
       
       <p className="diligencia-card__descripcion">{diligencia.descripcion}</p>
