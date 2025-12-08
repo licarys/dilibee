@@ -1,0 +1,30 @@
+.seguimiento {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.seguimiento__title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.seguimiento__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.seguimiento__card,
+.seguimiento__tracking {
+  width: 100%;
+}
+
+@media (max-width: 968px) {
+  .seguimiento__content {
+    grid-template-columns: 1fr;
+  }
+}
+

@@ -1,53 +1,13 @@
-import { useState, useEffect } from 'react'
-import { apiService } from '../utils/api'
+import { useState } from 'react'
+import useDiligencias from '../hooks/useDiligencias'
 import DiligenciaCard from '../components/DiligenciaCard'
+import Loading from '../components/Loading'
+import Message from '../components/Message'
 import '../styles/Historial.css'
 
 function Historial() {
-  const [diligencias, setDiligencias] = useState([])
   const [filtro, setFiltro] = useState('todas')
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState('')
-
-  useEffect(() => {
-    loadDiligencias()
-  }, [])
-
-  useEffect(() => {
-    if (filtro !== 'todas') {
-      loadDiligenciasByEstado()
-    } else {
-      loadDiligencias()
-    }
-  }, [filtro])
-
-  const loadDiligencias = async () => {
-    setLoading(true)
-    setError('')
-    try {
-      const response = await apiService.getDiligencias()
-      setDiligencias(response.data || [])
-    } catch (err) {
-      setError('Error al cargar el historial. Por favor, intenta nuevamente.')
-      console.error('Error:', err)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const loadDiligenciasByEstado = async () => {
-    setLoading(true)
-    setError('')
-    try {
-      const response = await apiService.getDiligenciasByEstado(filtro)
-      setDiligencias(response.data || [])
-    } catch (err) {
-      setError('Error al filtrar diligencias. Por favor, intenta nuevamente.')
-      console.error('Error:', err)
-    } finally {
-      setLoading(false)
-    }
-  }
+  const { diligencias, loading, error, refrescar } = useDiligencias(filtro)
 
   return (
     <div className="historial">
@@ -85,17 +45,11 @@ function Historial() {
       </div>
 
       {error && (
-        <div className="historial__error">
-          {error}
-        </div>
+        <Message tipo="error" mensaje={error} />
       )}
 
       <div className="historial__lista">
-        {loading && (
-          <p className="historial__empty">
-            Cargando diligencias...
-          </p>
-        )}
+        {loading && <Loading mensaje="Cargando diligencias..." />}
 
         {!loading && diligencias.length === 0 && (
           <p className="historial__empty">

@@ -131,3 +131,27 @@
   font-weight: 500;
 }
 
+.diligencia-card__actions {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.diligencia-card__button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #2196F3;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  text-align: center;
+  transition: background-color 0.2s;
+  width: 100%;
+  text-align: center;
+}
+
+.diligencia-card__button:hover {
+  background-color: #1976D2;
+}
+

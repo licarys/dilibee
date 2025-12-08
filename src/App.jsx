@@ -6,6 +6,7 @@ import Buscar from './pages/Buscar'
 import CrearDiligencia from './pages/CrearDiligencia'
 import Historial from './pages/Historial'
 import Perfil from './pages/Perfil'
+import Seguimiento from './pages/Seguimiento'
 import './App.css'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path="/buscar" element={<Buscar />} />
             <Route path="/crear-diligencia" element={<CrearDiligencia />} />
             <Route path="/historial" element={<Historial />} />
+            <Route path="/seguimiento/:id" element={<Seguimiento />} />
             <Route path="/perfil" element={<Perfil />} />
           </Routes>
         </main>

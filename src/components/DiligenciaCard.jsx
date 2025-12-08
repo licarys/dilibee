@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import '../styles/DiligenciaCard.css'
 
 function DiligenciaCard({ diligencia }) {
@@ -74,6 +75,15 @@ function DiligenciaCard({ diligencia }) {
           <span className="diligencia-card__gestor-nombre">{diligencia.gestor.nombre}</span>
         </div>
       )}
+
+      <div className="diligencia-card__actions">
+        <Link 
+          to={`/seguimiento/${diligencia.id}`}
+          className="diligencia-card__button"
+        >
+          Ver Seguimiento
+        </Link>
+      </div>
     </div>
   )
 }
