@@ -1,15 +1,22 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { apiService } from '../utils/api'
 import '../styles/CrearDiligencia.css'
 
 function CrearDiligencia() {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     titulo: '',
     descripcion: '',
     puntoInicio: '',
     puntoDestino: '',
     tipo: 'entrega',
-    urgencia: 'normal'
+    urgencia: 'normal',
+    precio: ''
   })
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+  const [success, setSuccess] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -17,13 +24,72 @@ function CrearDiligencia() {
       ...prev,
       [name]: value
     }))
+    // Limpiar mensajes cuando el usuario edita
+    if (error) setError('')
+    if (success) setSuccess(false)
   }
 
-  const handleSubmit = (e) => {
+  const calcularPrecioEstimado = () => {
+    let precioBase = 10000
+    const multiplicadores = {
+      'normal': 1,
+      'urgente': 1.5,
+      'muy-urgente': 2
+    }
+    const multiplicadorUrgencia = multiplicadores[formData.urgencia] || 1
+    return Math.round(precioBase * multiplicadorUrgencia)
+  }
+
+  const handlePrecioFocus = () => {
+    if (!formData.precio) {
+      const precioEstimado = calcularPrecioEstimado()
+      setFormData(prev => ({ ...prev, precio: precioEstimado.toString() }))
+    }
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Lógica de envío se implementará más adelante
-    console.log('Diligencia creada:', formData)
-    alert('¡Diligencia creada! (simulación)')
+    setLoading(true)
+    setError('')
+    setSuccess(false)
+
+    try {
+      const precio = parseInt(formData.precio) || calcularPrecioEstimado()
+      
+      const nuevaDiligencia = {
+        ...formData,
+        precio,
+        usuario: {
+          id: 1,
+          nombre: 'Usuario Actual',
+          calificacion: 4.5
+        }
+      }
+
+      const response = await apiService.createDiligencia(nuevaDiligencia)
+      
+      setSuccess(true)
+      setFormData({
+        titulo: '',
+        descripcion: '',
+        puntoInicio: '',
+        puntoDestino: '',
+        tipo: 'entrega',
+        urgencia: 'normal',
+        precio: ''
+      })
+
+      // Redirigir al historial después de 2 segundos
+      setTimeout(() => {
+        navigate('/historial')
+      }, 2000)
+
+    } catch (err) {
+      setError('Error al crear la diligencia. Por favor, intenta nuevamente.')
+      console.error('Error:', err)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -129,8 +195,45 @@ function CrearDiligencia() {
           </select>
         </div>
 
-        <button type="submit" className="crear-diligencia__submit">
-          Crear Diligencia
+        <div className="crear-diligencia__field">
+          <label htmlFor="precio" className="crear-diligencia__label">
+            Precio Estimado (COP)
+          </label>
+          <input
+            type="number"
+            id="precio"
+            name="precio"
+            className="crear-diligencia__input"
+            value={formData.precio}
+            onChange={handleChange}
+            onFocus={handlePrecioFocus}
+            placeholder="Se calculará automáticamente"
+            min="0"
+            required
+          />
+          <small className="crear-diligencia__hint">
+            El precio se estima según la urgencia. Puedes ajustarlo manualmente.
+          </small>
+        </div>
+
+        {error && (
+          <div className="crear-diligencia__message crear-diligencia__message--error">
+            {error}
+          </div>
+        )}
+
+        {success && (
+          <div className="crear-diligencia__message crear-diligencia__message--success">
+            ¡Diligencia creada exitosamente! Redirigiendo al historial...
+          </div>
+        )}
+
+        <button 
+          type="submit" 
+          className="crear-diligencia__submit"
+          disabled={loading}
+        >
+          {loading ? 'Creando...' : 'Crear Diligencia'}
         </button>
       </form>
     </div>

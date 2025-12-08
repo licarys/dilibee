@@ -53,7 +53,39 @@
   transition: background-color 0.2s;
 }
 
-.crear-diligencia__submit:hover {
+.crear-diligencia__submit:hover:not(:disabled) {
   background-color: #45a049;
+}
+
+.crear-diligencia__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.crear-diligencia__hint {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: #888;
+  font-style: italic;
+}
+
+.crear-diligencia__message {
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.crear-diligencia__message--error {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #ef5350;
+}
+
+.crear-diligencia__message--success {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #4caf50;
 }
 
