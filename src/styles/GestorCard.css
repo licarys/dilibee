@@ -1,0 +1,114 @@
+.gestor-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.gestor-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.gestor-card--no-disponible {
+  opacity: 0.7;
+}
+
+.gestor-card__header {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: flex-start;
+}
+
+.gestor-card__foto {
+  font-size: 3rem;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.gestor-card__info-principal {
+  flex: 1;
+}
+
+.gestor-card__nombre {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 0 0 0.5rem 0;
+}
+
+.gestor-card__calificacion {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.gestor-card__calificacion-numero {
+  font-weight: bold;
+  color: #4CAF50;
+  font-size: 1.1rem;
+}
+
+.gestor-card__estrellas {
+  font-size: 0.9rem;
+}
+
+.gestor-card__total {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.gestor-card__disponible {
+  padding: 0.25rem 0.75rem;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.gestor-card__no-disponible {
+  padding: 0.25rem 0.75rem;
+  background-color: #f44336;
+  color: white;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.gestor-card__detalles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.gestor-card__campo {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.gestor-card__label {
+  font-weight: bold;
+  color: #555;
+  min-width: 100px;
+}
+
+.gestor-card__valor {
+  color: #666;
+  flex: 1;
+}
+

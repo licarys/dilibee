@@ -1,0 +1,104 @@
+[
+  {
+    "id": 1,
+    "titulo": "Entrega de documentos importantes",
+    "descripcion": "Necesito entregar documentos legales en el centro de la ciudad",
+    "tipo": "documento",
+    "puntoInicio": "Calle 123, Zona Norte",
+    "puntoDestino": "Oficina Legal, Calle 456, Centro",
+    "estado": "pendiente",
+    "urgencia": "urgente",
+    "precio": 25000,
+    "fechaCreacion": "2024-01-20",
+    "usuario": {
+      "id": 1,
+      "nombre": "Carlos Mendoza",
+      "calificacion": 4.5
+    }
+  },
+  {
+    "id": 2,
+    "titulo": "Recoger paquete de mensajería",
+    "descripcion": "Recoger paquete en oficina de correos y entregarlo en mi domicilio",
+    "tipo": "entrega",
+    "puntoInicio": "Oficina de Correos, Calle 789",
+    "puntoDestino": "Calle 321, Zona Sur",
+    "estado": "en-progreso",
+    "urgencia": "normal",
+    "precio": 15000,
+    "fechaCreacion": "2024-01-19",
+    "usuario": {
+      "id": 2,
+      "nombre": "Ana García",
+      "calificacion": 4.8
+    },
+    "gestor": {
+      "id": 10,
+      "nombre": "Juan Pérez",
+      "calificacion": 4.9,
+      "telefono": "+57 300 123 4567"
+    }
+  },
+  {
+    "id": 3,
+    "titulo": "Pago de factura de servicios",
+    "descripcion": "Realizar pago de factura de servicios públicos en banco",
+    "tipo": "pago",
+    "puntoInicio": "Calle Principal 100",
+    "puntoDestino": "Banco Nacional, Sucursal Centro",
+    "estado": "completada",
+    "urgencia": "normal",
+    "precio": 12000,
+    "fechaCreacion": "2024-01-15",
+    "usuario": {
+      "id": 3,
+      "nombre": "María Rodríguez",
+      "calificacion": 4.7
+    },
+    "gestor": {
+      "id": 11,
+      "nombre": "Pedro López",
+      "calificacion": 4.6
+    }
+  },
+  {
+    "id": 4,
+    "titulo": "Compra urgente de medicamentos",
+    "descripcion": "Comprar medicamentos recetados en farmacia específica",
+    "tipo": "compra",
+    "puntoInicio": "Clínica San José, Calle 500",
+    "puntoDestino": "Farmacia Central, Avenida Principal",
+    "estado": "pendiente",
+    "urgencia": "muy-urgente",
+    "precio": 18000,
+    "fechaCreacion": "2024-01-21",
+    "usuario": {
+      "id": 4,
+      "nombre": "Luis Hernández",
+      "calificacion": 4.9
+    }
+  },
+  {
+    "id": 5,
+    "titulo": "Hacer fila para renovación de documento",
+    "descripcion": "Hacer fila en oficina de tránsito para renovación de licencia",
+    "tipo": "fila",
+    "puntoInicio": "Oficina de Tránsito, Zona Este",
+    "puntoDestino": "Oficina de Tránsito, Zona Este",
+    "estado": "en-progreso",
+    "urgencia": "urgente",
+    "precio": 30000,
+    "fechaCreacion": "2024-01-20",
+    "usuario": {
+      "id": 5,
+      "nombre": "Sofía Martínez",
+      "calificacion": 4.4
+    },
+    "gestor": {
+      "id": 12,
+      "nombre": "Roberto Silva",
+      "calificacion": 4.8
+    }
+  }
+]
+

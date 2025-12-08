@@ -1,0 +1,133 @@
+.diligencia-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.diligencia-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.diligencia-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.diligencia-card__titulo {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 0;
+  flex: 1;
+}
+
+.diligencia-card__estado {
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.diligencia-card__estado--pendiente {
+  background-color: #2196F3;
+  color: white;
+}
+
+.diligencia-card__estado--en-progreso {
+  background-color: #FF9800;
+  color: white;
+}
+
+.diligencia-card__estado--completada {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.diligencia-card__descripcion {
+  color: #666;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.diligencia-card__info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.diligencia-card__campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.diligencia-card__label {
+  font-size: 0.85rem;
+  color: #888;
+  font-weight: bold;
+}
+
+.diligencia-card__valor {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.diligencia-card__precio {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+.diligencia-card__ubicaciones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.diligencia-card__ubicacion {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.diligencia-card__ubicacion-label {
+  font-weight: bold;
+  color: #555;
+  min-width: 80px;
+}
+
+.diligencia-card__ubicacion-texto {
+  color: #666;
+  flex: 1;
+}
+
+.diligencia-card__gestor {
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.diligencia-card__gestor-label {
+  font-weight: bold;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.diligencia-card__gestor-nombre {
+  color: #4CAF50;
+  font-weight: 500;
+}
+

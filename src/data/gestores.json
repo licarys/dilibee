@@ -1,0 +1,63 @@
+[
+  {
+    "id": 10,
+    "nombre": "Juan Pérez",
+    "email": "juan.perez@email.com",
+    "telefono": "+57 300 123 4567",
+    "calificacion": 4.9,
+    "totalDiligencias": 145,
+    "disponible": true,
+    "zona": "Centro y Norte",
+    "vehiculo": "Moto",
+    "foto": "👨‍🦱"
+  },
+  {
+    "id": 11,
+    "nombre": "Pedro López",
+    "email": "pedro.lopez@email.com",
+    "telefono": "+57 310 234 5678",
+    "calificacion": 4.6,
+    "totalDiligencias": 89,
+    "disponible": true,
+    "zona": "Sur",
+    "vehiculo": "Bicicleta",
+    "foto": "👨"
+  },
+  {
+    "id": 12,
+    "nombre": "Roberto Silva",
+    "email": "roberto.silva@email.com",
+    "telefono": "+57 320 345 6789",
+    "calificacion": 4.8,
+    "totalDiligencias": 203,
+    "disponible": true,
+    "zona": "Este y Oeste",
+    "vehiculo": "Moto",
+    "foto": "👨‍💼"
+  },
+  {
+    "id": 13,
+    "nombre": "María González",
+    "email": "maria.gonzalez@email.com",
+    "telefono": "+57 350 456 7890",
+    "calificacion": 4.7,
+    "totalDiligencias": 112,
+    "disponible": false,
+    "zona": "Centro",
+    "vehiculo": "Caminando",
+    "foto": "👩"
+  },
+  {
+    "id": 14,
+    "nombre": "Carmen Ruiz",
+    "email": "carmen.ruiz@email.com",
+    "telefono": "+57 315 567 8901",
+    "calificacion": 4.9,
+    "totalDiligencias": 178,
+    "disponible": true,
+    "zona": "Norte y Sur",
+    "vehiculo": "Carro",
+    "foto": "👩‍💼"
+  }
+]
+
