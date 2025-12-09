@@ -54,7 +54,7 @@ function Login() {
 
         // Redirigir según el tipo de usuario
         if (usuario.tipo === 'gestor') {
-          navigate('/buscar')
+          navigate('/gestor')
         } else {
           navigate('/')
         }
@@ -132,10 +132,10 @@ function Login() {
           <p className="login__demo-title">Cuentas de demostración:</p>
           <div className="login__demo-accounts">
             <div className="login__demo-account">
-              <strong>Usuario:</strong> usuario@dilibee.com / usuario123
+              <strong>Usuario:</strong> john.doe@gmail.com / usuario123
             </div>
             <div className="login__demo-account">
-              <strong>Gestor:</strong> gestor@dilibee.com / gestor123
+              <strong>Gestor:</strong> juan.perez@dilibee.com / gestor123
             </div>
           </div>
         </div>

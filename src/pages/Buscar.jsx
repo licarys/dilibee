@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { isAuthenticated, getTipoUsuario } from '../utils/auth'
 import { apiService } from '../utils/api'
 import DiligenciaCard from '../components/DiligenciaCard'
 import GestorCard from '../components/GestorCard'
@@ -6,7 +8,19 @@ import SearchBar from '../components/SearchBar'
 import '../styles/Buscar.css'
 
 function Buscar() {
+  const navigate = useNavigate()
   const [searchTerm, setSearchTerm] = useState('')
+
+  useEffect(() => {
+    // Proteger ruta: solo usuarios pueden acceder
+    if (isAuthenticated()) {
+      const tipoUsuario = getTipoUsuario()
+      if (tipoUsuario === 'gestor') {
+        navigate('/gestor')
+        return
+      }
+    }
+  }, [navigate])
   const [diligencias, setDiligencias] = useState([])
   const [gestores, setGestores] = useState([])
   const [loading, setLoading] = useState(false)

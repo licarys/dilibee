@@ -51,39 +51,61 @@ function Header() {
         <nav className={`header__nav ${isMenuOpen ? 'header__nav--open' : ''}`}>
           <Link 
             to="/" 
-            className={`header__nav-link ${isActive('/')}`}
+            className={`header__nav-link ${isActive('/') || (usuario?.tipo === 'gestor' && isActive('/gestor')) ? 'header__nav-link--active' : ''}`}
             onClick={() => setIsMenuOpen(false)}
           >
-            Inicio
+            {usuario?.tipo === 'gestor' ? 'Panel Gestor' : 'Inicio'}
           </Link>
-          <Link 
-            to="/buscar" 
-            className={`header__nav-link ${isActive('/buscar')}`}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Buscar
-          </Link>
-          <Link 
-            to="/crear-diligencia" 
-            className={`header__nav-link ${isActive('/crear-diligencia')}`}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Crear Diligencia
-          </Link>
-          <Link 
-            to="/historial" 
-            className={`header__nav-link ${isActive('/historial')}`}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Historial
-          </Link>
-          <Link 
-            to="/perfil" 
-            className={`header__nav-link ${isActive('/perfil')}`}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Perfil
-          </Link>
+          
+          {usuario?.tipo === 'gestor' ? (
+            <>
+              <Link 
+                to="/historial-gestor" 
+                className={`header__nav-link ${isActive('/historial-gestor')}`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Historial
+              </Link>
+              <Link 
+                to="/perfil" 
+                className={`header__nav-link ${isActive('/perfil')}`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Perfil
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link 
+                to="/buscar" 
+                className={`header__nav-link ${isActive('/buscar')}`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Buscar
+              </Link>
+              <Link 
+                to="/crear-diligencia" 
+                className={`header__nav-link ${isActive('/crear-diligencia')}`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Crear Diligencia
+              </Link>
+              <Link 
+                to="/historial" 
+                className={`header__nav-link ${isActive('/historial')}`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Historial
+              </Link>
+              <Link 
+                to="/perfil" 
+                className={`header__nav-link ${isActive('/perfil')}`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Perfil
+              </Link>
+            </>
+          )}
           {usuario ? (
             <div className="header__user-section">
               <span className="header__user-name">{usuario.nombre}</span>

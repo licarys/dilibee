@@ -1,13 +1,72 @@
-import { useState } from 'react'
-import useDiligencias from '../hooks/useDiligencias'
+import { useState, useEffect, useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { getUsuarioActual, isAuthenticated, getTipoUsuario } from '../utils/auth'
+import { apiService } from '../utils/api'
 import DiligenciaCard from '../components/DiligenciaCard'
 import Loading from '../components/Loading'
 import Message from '../components/Message'
 import '../styles/Historial.css'
 
 function Historial() {
+  const navigate = useNavigate()
   const [filtro, setFiltro] = useState('todas')
-  const { diligencias, loading, error, refrescar } = useDiligencias(filtro)
+  const [diligencias, setDiligencias] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
+  const [usuario, setUsuario] = useState(null)
+
+  useEffect(() => {
+    // Verificar autenticación y tipo de usuario
+    if (!isAuthenticated()) {
+      navigate('/login')
+      return
+    }
+
+    const tipoUsuario = getTipoUsuario()
+    // Si es gestor, redirigir a su historial
+    if (tipoUsuario === 'gestor') {
+      navigate('/historial-gestor')
+      return
+    }
+
+    const usuarioActual = getUsuarioActual()
+    setUsuario(usuarioActual)
+  }, [navigate])
+
+  const loadDiligencias = useCallback(async () => {
+    if (!usuario) return
+
+    setLoading(true)
+    setError('')
+    try {
+      const response = await apiService.getDiligencias()
+      const todasLasDiligencias = response.data || []
+
+      // Filtrar solo las diligencias del usuario actual
+      const diligenciasDelUsuario = todasLasDiligencias.filter(
+        d => d.usuario && d.usuario.id === usuario.id
+      )
+
+      // Aplicar filtro de estado
+      let diligenciasFiltradas = diligenciasDelUsuario
+      if (filtro !== 'todas') {
+        diligenciasFiltradas = diligenciasDelUsuario.filter(d => d.estado === filtro)
+      }
+
+      setDiligencias(diligenciasFiltradas)
+    } catch (err) {
+      setError('Error al cargar el historial. Por favor, intenta nuevamente.')
+      console.error('Error:', err)
+    } finally {
+      setLoading(false)
+    }
+  }, [usuario, filtro])
+
+  useEffect(() => {
+    if (usuario) {
+      loadDiligencias()
+    }
+  }, [usuario, loadDiligencias])
 
   return (
     <div className="historial">

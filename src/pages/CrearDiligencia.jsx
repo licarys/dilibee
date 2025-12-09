@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { isAuthenticated, getTipoUsuario, getUsuarioActual } from '../utils/auth'
 import { apiService } from '../utils/api'
 import '../styles/CrearDiligencia.css'
 
@@ -17,6 +18,17 @@ function CrearDiligencia() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)
+
+  useEffect(() => {
+    // Proteger ruta: solo usuarios pueden acceder
+    if (isAuthenticated()) {
+      const tipoUsuario = getTipoUsuario()
+      if (tipoUsuario === 'gestor') {
+        navigate('/gestor')
+        return
+      }
+    }
+  }, [navigate])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -56,12 +68,17 @@ function CrearDiligencia() {
     try {
       const precio = parseInt(formData.precio) || calcularPrecioEstimado()
       
+      const usuarioActual = getUsuarioActual()
       const nuevaDiligencia = {
         ...formData,
         precio,
-        usuario: {
+        usuario: usuarioActual ? {
+          id: usuarioActual.id,
+          nombre: usuarioActual.nombre,
+          calificacion: usuarioActual.calificacion || 4.5
+        } : {
           id: 1,
-          nombre: 'Usuario Actual',
+          nombre: 'Usuario',
           calificacion: 4.5
         }
       }

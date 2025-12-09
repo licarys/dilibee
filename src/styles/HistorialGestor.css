@@ -1,0 +1,107 @@
+.historial-gestor {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.historial-gestor__title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--carbon-black);
+  font-family: var(--font-heading);
+  font-weight: 800;
+}
+
+.historial-gestor__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.historial-gestor__stat {
+  background-color: var(--soft-white);
+  border-radius: 20px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(26, 26, 26, 0.1);
+}
+
+.historial-gestor__stat-number {
+  font-size: 2rem;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  color: var(--honey-gold);
+  margin-bottom: 0.5rem;
+}
+
+.historial-gestor__stat-label {
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  color: var(--carbon-black);
+  opacity: 0.7;
+  margin: 0;
+}
+
+.historial-gestor__filtros {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.historial-gestor__filtro {
+  padding: 0.5rem 1.5rem;
+  border: 2px solid var(--sky-honey);
+  background-color: var(--soft-white);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--carbon-black);
+}
+
+.historial-gestor__filtro:hover:not(:disabled) {
+  border-color: var(--bee-yellow);
+}
+
+.historial-gestor__filtro--active {
+  background-color: var(--bee-yellow);
+  color: var(--carbon-black);
+  border-color: var(--bee-yellow);
+}
+
+.historial-gestor__filtro:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.historial-gestor__lista {
+  margin-top: 2rem;
+}
+
+.historial-gestor__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.historial-gestor__empty {
+  text-align: center;
+  color: var(--carbon-black);
+  font-family: var(--font-body);
+  padding: 3rem;
+  font-size: 1.1rem;
+  opacity: 0.7;
+  background-color: var(--soft-white);
+  border-radius: 20px;
+}
+
+@media (max-width: 768px) {
+  .historial-gestor__grid {
+    grid-template-columns: 1fr;
+  }
+}
+

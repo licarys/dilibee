@@ -1,25 +1,6 @@
-import { useState, useEffect } from 'react'
 import '../styles/Tracking.css'
 
-function Tracking({ diligenciaId }) {
-  const [estado, setEstado] = useState('pendiente')
-  const [ubicacion, setUbicacion] = useState(null)
-
-  useEffect(() => {
-    // Simular actualización de estado y ubicación
-    const interval = setInterval(() => {
-      // En producción, esto vendría de la API
-      const estados = ['pendiente', 'en-progreso', 'completada']
-      const indiceAleatorio = Math.floor(Math.random() * estados.length)
-      // No cambiar si ya está completada
-      if (estado !== 'completada') {
-        setEstado(estados[indiceAleatorio])
-      }
-    }, 5000)
-
-    return () => clearInterval(interval)
-  }, [estado])
-
+function Tracking({ diligenciaId, estado = 'pendiente' }) {
   const getEstadoLabel = (estado) => {
     const labels = {
       'pendiente': 'Pendiente',

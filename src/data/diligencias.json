@@ -12,7 +12,7 @@
     "fechaCreacion": "2024-01-20",
     "usuario": {
       "id": 1,
-      "nombre": "Carlos Mendoza",
+      "nombre": "John Doe",
       "calificacion": 4.5
     }
   },
@@ -23,20 +23,20 @@
     "tipo": "entrega",
     "puntoInicio": "Oficina de Correos, Calle 789",
     "puntoDestino": "Calle 321, Zona Sur",
-    "estado": "en-progreso",
+    "estado": "completada",
     "urgencia": "normal",
     "precio": 200,
-    "fechaCreacion": "2024-01-19",
+    "fechaCreacion": "2024-01-10",
     "usuario": {
-      "id": 2,
-      "nombre": "Ana García",
-      "calificacion": 4.8
+      "id": 1,
+      "nombre": "John Doe",
+      "calificacion": 4.5
     },
     "gestor": {
-      "id": 10,
+      "id": 2,
       "nombre": "Juan Pérez",
       "calificacion": 4.9,
-      "telefono": "+57 300 123 4567"
+      "telefono": "+52 55 9876 5432"
     }
   },
   {
@@ -49,16 +49,17 @@
     "estado": "completada",
     "urgencia": "normal",
     "precio": 180,
-    "fechaCreacion": "2024-01-15",
+    "fechaCreacion": "2024-01-08",
     "usuario": {
-      "id": 3,
-      "nombre": "María Rodríguez",
-      "calificacion": 4.7
+      "id": 1,
+      "nombre": "John Doe",
+      "calificacion": 4.5
     },
     "gestor": {
-      "id": 11,
-      "nombre": "Pedro López",
-      "calificacion": 4.6
+      "id": 2,
+      "nombre": "Juan Pérez",
+      "calificacion": 4.9,
+      "telefono": "+52 55 9876 5432"
     }
   },
   {
@@ -73,9 +74,9 @@
     "precio": 450,
     "fechaCreacion": "2024-01-21",
     "usuario": {
-      "id": 4,
-      "nombre": "Luis Hernández",
-      "calificacion": 4.9
+      "id": 1,
+      "nombre": "John Doe",
+      "calificacion": 4.5
     }
   },
   {
@@ -88,16 +89,126 @@
     "estado": "en-progreso",
     "urgencia": "urgente",
     "precio": 550,
-    "fechaCreacion": "2024-01-20",
+    "fechaCreacion": "2024-01-18",
     "usuario": {
-      "id": 5,
-      "nombre": "Sofía Martínez",
-      "calificacion": 4.4
+      "id": 1,
+      "nombre": "John Doe",
+      "calificacion": 4.5
     },
     "gestor": {
-      "id": 12,
-      "nombre": "Roberto Silva",
-      "calificacion": 4.8
+      "id": 2,
+      "nombre": "Juan Pérez",
+      "calificacion": 4.9,
+      "telefono": "+52 55 9876 5432"
+    }
+  },
+  {
+    "id": 6,
+    "titulo": "Entrega de regalo de cumpleaños",
+    "descripcion": "Entregar regalo en dirección específica para cumpleaños",
+    "tipo": "entrega",
+    "puntoInicio": "Mi ubicación",
+    "puntoDestino": "Calle Fiesta 789, Colonia Centro",
+    "estado": "completada",
+    "urgencia": "normal",
+    "precio": 220,
+    "fechaCreacion": "2024-01-05",
+    "usuario": {
+      "id": 1,
+      "nombre": "John Doe",
+      "calificacion": 4.5
+    },
+    "gestor": {
+      "id": 2,
+      "nombre": "Juan Pérez",
+      "calificacion": 4.9,
+      "telefono": "+52 55 9876 5432"
+    }
+  },
+  {
+    "id": 7,
+    "titulo": "Recoger comprobante fiscal",
+    "descripcion": "Recoger comprobante fiscal en oficina gubernamental",
+    "tipo": "documento",
+    "puntoInicio": "SAT, Sucursal Centro",
+    "puntoDestino": "Mi oficina",
+    "estado": "completada",
+    "urgencia": "normal",
+    "precio": 280,
+    "fechaCreacion": "2024-01-12",
+    "usuario": {
+      "id": 1,
+      "nombre": "John Doe",
+      "calificacion": 4.5
+    },
+    "gestor": {
+      "id": 2,
+      "nombre": "Juan Pérez",
+      "calificacion": 4.9,
+      "telefono": "+52 55 9876 5432"
+    }
+  },
+  {
+    "id": 8,
+    "titulo": "Pago de predial",
+    "descripcion": "Realizar pago de predial en oficina recaudadora",
+    "tipo": "pago",
+    "puntoInicio": "Oficina de Recaudación",
+    "puntoDestino": "Oficina de Recaudación",
+    "estado": "pendiente",
+    "urgencia": "normal",
+    "precio": 190,
+    "fechaCreacion": "2024-01-22",
+    "usuario": {
+      "id": 1,
+      "nombre": "John Doe",
+      "calificacion": 4.5
+    }
+  },
+  {
+    "id": 9,
+    "titulo": "Compra de material de oficina",
+    "descripcion": "Comprar material de oficina urgente para reunión",
+    "tipo": "compra",
+    "puntoInicio": "Tienda de Oficina, Zona Norte",
+    "puntoDestino": "Mi oficina",
+    "estado": "en-progreso",
+    "urgencia": "urgente",
+    "precio": 320,
+    "fechaCreacion": "2024-01-19",
+    "usuario": {
+      "id": 1,
+      "nombre": "John Doe",
+      "calificacion": 4.5
+    },
+    "gestor": {
+      "id": 2,
+      "nombre": "Juan Pérez",
+      "calificacion": 4.9,
+      "telefono": "+52 55 9876 5432"
+    }
+  },
+  {
+    "id": 10,
+    "titulo": "Entrega de documentos notariales",
+    "descripcion": "Entregar documentos en notaría para trámite legal",
+    "tipo": "documento",
+    "puntoInicio": "Mi ubicación",
+    "puntoDestino": "Notaría 45, Centro Histórico",
+    "estado": "completada",
+    "urgencia": "normal",
+    "precio": 380,
+    "fechaCreacion": "2024-01-03",
+    "usuario": {
+      "id": 1,
+      "nombre": "John Doe",
+      "calificacion": 4.5
+    },
+    "gestor": {
+      "id": 2,
+      "nombre": "Juan Pérez",
+      "calificacion": 4.9,
+      "telefono": "+52 55 9876 5432"
     }
   }
 ]

@@ -59,7 +59,7 @@ function Seguimiento() {
         </div>
         
         <div className="seguimiento__tracking">
-          <Tracking diligenciaId={diligencia.id} />
+          <Tracking diligenciaId={diligencia.id} estado={diligencia.estado} />
         </div>
       </div>
     </div>

@@ -14,9 +14,9 @@ function SearchBar({ onSearch, placeholder = 'Buscar...' }) {
   const handleChange = (e) => {
     const value = e.target.value
     setSearchTerm(value)
-    // Búsqueda en tiempo real opcional
-    if (onSearch && value === '') {
-      onSearch('')
+    // Búsqueda en tiempo real
+    if (onSearch) {
+      onSearch(value)
     }
   }
 

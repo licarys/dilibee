@@ -162,6 +162,40 @@ export const apiService = {
       data: gestor,
       status: 200
     }
+  },
+
+  // Aceptar una diligencia (asignar a un gestor)
+  async aceptarDiligencia(diligenciaId, gestorId) {
+    await delay(600)
+    
+    // Obtener la diligencia y el gestor
+    const diligencia = diligenciasData.find(d => d.id === parseInt(diligenciaId))
+    const gestor = gestoresData.find(g => g.id === parseInt(gestorId))
+    
+    if (!diligencia) {
+      throw new Error('Diligencia no encontrada')
+    }
+    
+    if (!gestor) {
+      throw new Error('Gestor no encontrado')
+    }
+
+    // Actualizar la diligencia (en producción esto actualizaría la base de datos)
+    const diligenciaActualizada = {
+      ...diligencia,
+      estado: 'en-progreso',
+      gestor: {
+        id: gestor.id,
+        nombre: gestor.nombre,
+        calificacion: gestor.calificacion,
+        telefono: gestor.telefono
+      }
+    }
+
+    return {
+      data: diligenciaActualizada,
+      status: 200
+    }
   }
 }
 
