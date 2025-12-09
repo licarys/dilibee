@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { getUsuarioActual, isAuthenticated } from '../utils/auth'
 import '../styles/Perfil.css'
 
 function Perfil() {
+  const navigate = useNavigate()
   const [usuario, setUsuario] = useState({
     nombre: '',
     email: '',
@@ -12,14 +15,25 @@ function Perfil() {
   const [editando, setEditando] = useState(false)
 
   useEffect(() => {
-    // En producción, esto vendría de una API o contexto de autenticación
-    setUsuario({
-      nombre: 'Usuario Ejemplo',
-      email: 'usuario@ejemplo.com',
-      telefono: '+1234567890',
-      tipo: 'usuario'
-    })
-  }, [])
+    // Verificar si el usuario está autenticado
+    if (!isAuthenticated()) {
+      navigate('/login')
+      return
+    }
+
+    // Cargar datos del usuario actual desde localStorage
+    const usuarioActual = getUsuarioActual()
+    if (usuarioActual) {
+      setUsuario({
+        nombre: usuarioActual.nombre || '',
+        email: usuarioActual.email || '',
+        telefono: usuarioActual.telefono || '',
+        tipo: usuarioActual.tipo || 'usuario',
+        ...(usuarioActual.zona && { zona: usuarioActual.zona }),
+        ...(usuarioActual.calificacion && { calificacion: usuarioActual.calificacion })
+      })
+    }
+  }, [navigate])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -59,6 +73,18 @@ function Perfil() {
             <span className="perfil__label">Tipo:</span>
             <span className="perfil__valor">{usuario.tipo}</span>
           </div>
+          {usuario.zona && (
+            <div className="perfil__campo">
+              <span className="perfil__label">Zona:</span>
+              <span className="perfil__valor">{usuario.zona}</span>
+            </div>
+          )}
+          {usuario.calificacion && (
+            <div className="perfil__campo">
+              <span className="perfil__label">Calificación:</span>
+              <span className="perfil__valor">⭐ {usuario.calificacion}</span>
+            </div>
+          )}
           <button 
             className="perfil__editar"
             onClick={() => setEditando(true)}

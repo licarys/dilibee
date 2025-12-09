@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "email": "usuario@dilibee.com",
+    "password": "usuario123",
+    "nombre": "Usuario Demo",
+    "tipo": "usuario",
+    "telefono": "+52 55 1234 5678"
+  },
+  {
+    "id": 2,
+    "email": "gestor@dilibee.com",
+    "password": "gestor123",
+    "nombre": "Juan Pérez",
+    "tipo": "gestor",
+    "telefono": "+52 55 9876 5432",
+    "zona": "Centro y Norte",
+    "calificacion": 4.9
+  }
+]
+

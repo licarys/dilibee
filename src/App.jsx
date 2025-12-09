@@ -7,6 +7,7 @@ import CrearDiligencia from './pages/CrearDiligencia'
 import Historial from './pages/Historial'
 import Perfil from './pages/Perfil'
 import Seguimiento from './pages/Seguimiento'
+import Login from './pages/Login'
 import './App.css'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <main className="app__main">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/buscar" element={<Buscar />} />
             <Route path="/crear-diligencia" element={<CrearDiligencia />} />
             <Route path="/historial" element={<Historial />} />

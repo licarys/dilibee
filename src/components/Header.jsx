@@ -1,10 +1,21 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { getUsuarioActual, isAuthenticated, logout } from '../utils/auth'
 import '../styles/Header.css'
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [usuario, setUsuario] = useState(null)
   const location = useLocation()
+
+  useEffect(() => {
+    // Actualizar usuario cuando cambia la ubicación o se monta el componente
+    if (isAuthenticated()) {
+      setUsuario(getUsuarioActual())
+    } else {
+      setUsuario(null)
+    }
+  }, [location])
 
   useEffect(() => {
     // Cerrar el menú móvil cuando cambia la ruta
@@ -73,6 +84,28 @@ function Header() {
           >
             Perfil
           </Link>
+          {usuario ? (
+            <div className="header__user-section">
+              <span className="header__user-name">{usuario.nombre}</span>
+              <button 
+                className="header__logout-button"
+                onClick={() => {
+                  logout()
+                  setIsMenuOpen(false)
+                }}
+              >
+                Cerrar Sesión
+              </button>
+            </div>
+          ) : (
+            <Link 
+              to="/login" 
+              className={`header__nav-link ${isActive('/login')}`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Iniciar Sesión
+            </Link>
+          )}
         </nav>
       </div>
     </header>
