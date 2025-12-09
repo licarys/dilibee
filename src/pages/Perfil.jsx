@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getUsuarioActual, isAuthenticated } from '../utils/auth'
+import InviteSignup from '../components/InviteSignup'
 import '../styles/Perfil.css'
 
 function Perfil() {
@@ -15,25 +16,31 @@ function Perfil() {
   const [editando, setEditando] = useState(false)
 
   useEffect(() => {
-    // Verificar si el usuario está autenticado
-    if (!isAuthenticated()) {
-      navigate('/login')
-      return
-    }
-
     // Cargar datos del usuario actual desde localStorage
-    const usuarioActual = getUsuarioActual()
-    if (usuarioActual) {
-      setUsuario({
-        nombre: usuarioActual.nombre || '',
-        email: usuarioActual.email || '',
-        telefono: usuarioActual.telefono || '',
-        tipo: usuarioActual.tipo || 'usuario',
-        ...(usuarioActual.zona && { zona: usuarioActual.zona }),
-        ...(usuarioActual.calificacion && { calificacion: usuarioActual.calificacion })
-      })
+    if (isAuthenticated()) {
+      const usuarioActual = getUsuarioActual()
+      if (usuarioActual) {
+        setUsuario({
+          nombre: usuarioActual.nombre || '',
+          email: usuarioActual.email || '',
+          telefono: usuarioActual.telefono || '',
+          tipo: usuarioActual.tipo || 'usuario',
+          ...(usuarioActual.zona && { zona: usuarioActual.zona }),
+          ...(usuarioActual.calificacion && { calificacion: usuarioActual.calificacion })
+        })
+      }
     }
-  }, [navigate])
+  }, [])
+
+  // Si no está autenticado, mostrar invitación
+  if (!isAuthenticated()) {
+    return (
+      <InviteSignup 
+        title="Accede a tu perfil"
+        message="Crea una cuenta para gestionar tu perfil y mantener tus datos actualizados."
+      />
+    )
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target

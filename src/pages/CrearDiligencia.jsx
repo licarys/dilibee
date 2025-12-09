@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { isAuthenticated, getTipoUsuario, getUsuarioActual } from '../utils/auth'
 import { apiService } from '../utils/api'
+import InviteSignup from '../components/InviteSignup'
 import '../styles/CrearDiligencia.css'
 
 function CrearDiligencia() {
@@ -20,7 +21,7 @@ function CrearDiligencia() {
   const [success, setSuccess] = useState(false)
 
   useEffect(() => {
-    // Proteger ruta: solo usuarios pueden acceder
+    // Si es gestor, redirigir
     if (isAuthenticated()) {
       const tipoUsuario = getTipoUsuario()
       if (tipoUsuario === 'gestor') {
@@ -29,6 +30,16 @@ function CrearDiligencia() {
       }
     }
   }, [navigate])
+
+  // Si no está autenticado, mostrar invitación
+  if (!isAuthenticated()) {
+    return (
+      <InviteSignup 
+        title="Crea una cuenta para crear diligencias"
+        message="Necesitas una cuenta para crear y gestionar tus diligencias. Es rápido y fácil."
+      />
+    )
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target

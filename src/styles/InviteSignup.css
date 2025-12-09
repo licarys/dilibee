@@ -1,0 +1,131 @@
+.invite-signup {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--sky-honey) 0%, var(--soft-white) 100%);
+}
+
+.invite-signup__container {
+  max-width: 600px;
+  width: 100%;
+  background-color: var(--soft-white);
+  border-radius: 30px;
+  padding: 3rem 2rem;
+  box-shadow: 0 10px 40px rgba(26, 26, 26, 0.15);
+  text-align: center;
+}
+
+.invite-signup__icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.invite-signup__title {
+  font-size: 2rem;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  color: var(--carbon-black);
+  margin-bottom: 1rem;
+}
+
+.invite-signup__message {
+  font-size: 1.1rem;
+  font-family: var(--font-body);
+  color: var(--carbon-black);
+  opacity: 0.7;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.invite-signup__benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.invite-signup__benefit {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-body);
+  color: var(--carbon-black);
+  font-size: 1rem;
+}
+
+.invite-signup__benefit-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--mint-green);
+  color: var(--carbon-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.invite-signup__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.invite-signup__button {
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: inline-block;
+}
+
+.invite-signup__button--primary {
+  background-color: var(--bee-yellow);
+  color: var(--carbon-black);
+  box-shadow: 0 4px 15px rgba(26, 26, 26, 0.15);
+}
+
+.invite-signup__button--primary:hover {
+  background-color: var(--honey-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(26, 26, 26, 0.2);
+}
+
+.invite-signup__button--secondary {
+  background-color: transparent;
+  color: var(--carbon-black);
+  border: 2px solid var(--carbon-black);
+  opacity: 0.7;
+}
+
+.invite-signup__button--secondary:hover {
+  opacity: 1;
+  background-color: var(--carbon-black);
+  color: var(--soft-white);
+}
+
+@media (max-width: 768px) {
+  .invite-signup {
+    padding: 1rem;
+  }
+
+  .invite-signup__container {
+    padding: 2rem 1.5rem;
+  }
+
+  .invite-signup__title {
+    font-size: 1.5rem;
+  }
+
+  .invite-signup__icon {
+    font-size: 3rem;
+  }
+}
+

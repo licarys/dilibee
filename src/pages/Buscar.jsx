@@ -10,6 +10,10 @@ import '../styles/Buscar.css'
 function Buscar() {
   const navigate = useNavigate()
   const [searchTerm, setSearchTerm] = useState('')
+  const [diligencias, setDiligencias] = useState([])
+  const [gestores, setGestores] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [activeTab, setActiveTab] = useState('todos')
 
   useEffect(() => {
     // Proteger ruta: solo usuarios pueden acceder
@@ -20,11 +24,29 @@ function Buscar() {
         return
       }
     }
+    
+    // Cargar todos los datos por defecto al montar el componente
+    loadAllData()
   }, [navigate])
-  const [diligencias, setDiligencias] = useState([])
-  const [gestores, setGestores] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [activeTab, setActiveTab] = useState('todos')
+
+  const loadAllData = async () => {
+    setLoading(true)
+    try {
+      const [diligenciasResponse, gestoresResponse] = await Promise.all([
+        apiService.getDiligencias(),
+        apiService.getGestores()
+      ])
+
+      setDiligencias(diligenciasResponse.data || [])
+      setGestores(gestoresResponse.data || [])
+    } catch (error) {
+      console.error('Error al cargar datos:', error)
+      setDiligencias([])
+      setGestores([])
+    } finally {
+      setLoading(false)
+    }
+  }
 
   const handleSearch = async (term) => {
     const searchValue = term || searchTerm
@@ -33,6 +55,12 @@ function Buscar() {
 
     try {
       const searchTermClean = searchValue.trim()
+      
+      if (searchTermClean === '') {
+        // Si el término está vacío, cargar todos los datos
+        await loadAllData()
+        return
+      }
       
       // Buscar en ambas categorías simultáneamente
       const [diligenciasResponse, gestoresResponse] = await Promise.all([
@@ -51,42 +79,17 @@ function Buscar() {
     }
   }
 
-  const handleInitialLoad = async () => {
-    setLoading(true)
-    try {
-      const [diligenciasResponse, gestoresResponse] = await Promise.all([
-        apiService.getDiligencias(),
-        apiService.getGestores()
-      ])
-
-      setDiligencias(diligenciasResponse.data || [])
-      setGestores(gestoresResponse.data || [])
-    } catch (error) {
-      console.error('Error al cargar datos:', error)
-    } finally {
-      setLoading(false)
-    }
-  }
-
   const hasResults = diligencias.length > 0 || gestores.length > 0
 
   return (
     <div className="buscar">
-      <h1 className="buscar__title">Buscar Gestores y Diligencias</h1>
+      <h1 className="buscar__title">Explorar Gestores y Diligencias</h1>
       
       <div className="buscar__search-container">
         <SearchBar
           onSearch={handleSearch}
           placeholder="Buscar por zona, tipo de diligencia, gestor, título..."
         />
-        <button 
-          type="button" 
-          className="buscar__button buscar__button--secondary"
-          onClick={handleInitialLoad}
-          disabled={loading}
-        >
-          Cargar Todos
-        </button>
       </div>
 
       {hasResults && (
@@ -119,7 +122,7 @@ function Buscar() {
 
         {!loading && !hasResults && searchTerm === '' && (
           <p className="buscar__empty">
-            Ingresa un término de búsqueda o haz clic en "Cargar Todos" para ver gestores y diligencias disponibles.
+            No hay diligencias o gestores disponibles en este momento.
           </p>
         )}
 

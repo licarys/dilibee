@@ -51,10 +51,10 @@ function Header() {
         <nav className={`header__nav ${isMenuOpen ? 'header__nav--open' : ''}`}>
           <Link 
             to="/" 
-            className={`header__nav-link ${isActive('/') || (usuario?.tipo === 'gestor' && isActive('/gestor')) ? 'header__nav-link--active' : ''}`}
+            className={`header__nav-link ${isActive('/') || (usuario?.tipo === 'gestor' && isActive('/gestor')) || (usuario?.tipo === 'usuario' && isActive('/buscar')) ? 'header__nav-link--active' : ''}`}
             onClick={() => setIsMenuOpen(false)}
           >
-            {usuario?.tipo === 'gestor' ? 'Panel Gestor' : 'Inicio'}
+            {usuario?.tipo === 'gestor' ? 'Panel Gestor' : usuario?.tipo === 'usuario' ? 'Buscar' : 'Inicio'}
           </Link>
           
           {usuario?.tipo === 'gestor' ? (
@@ -76,13 +76,6 @@ function Header() {
             </>
           ) : (
             <>
-              <Link 
-                to="/buscar" 
-                className={`header__nav-link ${isActive('/buscar')}`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Buscar
-              </Link>
               <Link 
                 to="/crear-diligencia" 
                 className={`header__nav-link ${isActive('/crear-diligencia')}`}

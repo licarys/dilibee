@@ -10,17 +10,25 @@ import Perfil from './pages/Perfil'
 import Seguimiento from './pages/Seguimiento'
 import Login from './pages/Login'
 import GestorDashboard from './pages/GestorDashboard'
-import { getTipoUsuario } from './utils/auth'
+import { getTipoUsuario, isAuthenticated } from './utils/auth'
 import './App.css'
 
 // Componente que decide qué mostrar en la ruta "/"
 function HomeRoute() {
   const tipoUsuario = getTipoUsuario()
+  const authenticated = isAuthenticated()
   
+  // Si es gestor, mostrar su dashboard
   if (tipoUsuario === 'gestor') {
     return <GestorDashboard />
   }
   
+  // Si es usuario autenticado, mostrar la página de buscar
+  if (authenticated && tipoUsuario === 'usuario') {
+    return <Buscar />
+  }
+  
+  // Si no está autenticado, mostrar el home para invitados
   return <Home />
 }
 

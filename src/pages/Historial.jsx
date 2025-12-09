@@ -5,6 +5,7 @@ import { apiService } from '../utils/api'
 import DiligenciaCard from '../components/DiligenciaCard'
 import Loading from '../components/Loading'
 import Message from '../components/Message'
+import InviteSignup from '../components/InviteSignup'
 import '../styles/Historial.css'
 
 function Historial() {
@@ -16,22 +17,28 @@ function Historial() {
   const [usuario, setUsuario] = useState(null)
 
   useEffect(() => {
-    // Verificar autenticación y tipo de usuario
-    if (!isAuthenticated()) {
-      navigate('/login')
-      return
-    }
-
-    const tipoUsuario = getTipoUsuario()
     // Si es gestor, redirigir a su historial
-    if (tipoUsuario === 'gestor') {
-      navigate('/historial-gestor')
-      return
-    }
+    if (isAuthenticated()) {
+      const tipoUsuario = getTipoUsuario()
+      if (tipoUsuario === 'gestor') {
+        navigate('/historial-gestor')
+        return
+      }
 
-    const usuarioActual = getUsuarioActual()
-    setUsuario(usuarioActual)
+      const usuarioActual = getUsuarioActual()
+      setUsuario(usuarioActual)
+    }
   }, [navigate])
+
+  // Si no está autenticado, mostrar invitación
+  if (!isAuthenticated()) {
+    return (
+      <InviteSignup 
+        title="Accede a tu historial de diligencias"
+        message="Crea una cuenta para ver y gestionar todas tus diligencias en un solo lugar."
+      />
+    )
+  }
 
   const loadDiligencias = useCallback(async () => {
     if (!usuario) return
