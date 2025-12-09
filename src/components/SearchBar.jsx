@@ -20,6 +20,14 @@ function SearchBar({ onSearch, placeholder = 'Buscar...' }) {
     }
   }
 
+  const handleClear = () => {
+    setSearchTerm('')
+    // Reiniciar búsqueda llamando a onSearch con string vacío
+    if (onSearch) {
+      onSearch('')
+    }
+  }
+
   return (
     <form className="search-bar" onSubmit={handleSubmit}>
       <div className="search-bar__container">
@@ -30,6 +38,16 @@ function SearchBar({ onSearch, placeholder = 'Buscar...' }) {
           value={searchTerm}
           onChange={handleChange}
         />
+        {searchTerm && (
+          <button
+            type="button"
+            className="search-bar__clear-button"
+            onClick={handleClear}
+            aria-label="Limpiar búsqueda"
+          >
+            ✕
+          </button>
+        )}
         <button type="submit" className="search-bar__button" aria-label="Buscar">
           🔍
         </button>
