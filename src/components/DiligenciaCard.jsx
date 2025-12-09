@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import Badge from './Badge'
 import '../styles/DiligenciaCard.css'
 
-function DiligenciaCard({ diligencia }) {
+function DiligenciaCard({ diligencia, hideActions = false }) {
   const getEstadoClass = (estado) => {
     const estados = {
       'pendiente': 'diligencia-card__estado--pendiente',
@@ -80,14 +80,16 @@ function DiligenciaCard({ diligencia }) {
         </div>
       )}
 
-      <div className="diligencia-card__actions">
-        <Link 
-          to={`/seguimiento/${diligencia.id}`}
-          className="diligencia-card__button"
-        >
-          Ver Seguimiento
-        </Link>
-      </div>
+      {!hideActions && (
+        <div className="diligencia-card__actions">
+          <Link 
+            to={`/seguimiento/${diligencia.id}`}
+            className="diligencia-card__button"
+          >
+            Ver Seguimiento
+          </Link>
+        </div>
+      )}
     </div>
   )
 }

@@ -191,9 +191,16 @@
   box-shadow: 0 6px 20px rgba(26, 26, 26, 0.2);
 }
 
-.gestor-dashboard__accept-button:disabled {
+.gestor-dashboard__accept-button:disabled,
+.gestor-dashboard__accept-button--disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  background-color: #ccc;
+}
+
+.gestor-dashboard__accept-button--disabled:hover {
+  transform: none;
+  box-shadow: 0 4px 15px rgba(26, 26, 26, 0.15);
 }
 
 .gestor-dashboard__empty {

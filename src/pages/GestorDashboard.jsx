@@ -74,6 +74,13 @@ function GestorDashboard() {
       setLoading(true)
       setError('')
       
+      // Verificar si ya tiene una diligencia activa
+      if (diligenciasAsignadas.length > 0) {
+        setError('Ya tienes una diligencia en progreso. Completa la diligencia actual antes de aceptar otra.')
+        setLoading(false)
+        return
+      }
+
       // Obtener la diligencia que se va a aceptar
       const diligenciaAceptar = diligenciasDisponibles.find(d => d.id === diligenciaId)
       if (!diligenciaAceptar) {
@@ -92,12 +99,15 @@ function GestorDashboard() {
         [...prev, diligenciaActualizada]
       )
       
+      // Recargar diligencias para asegurar sincronización
+      await loadDiligencias()
+      
       // Cambiar a la pestaña de asignadas para ver la nueva diligencia
       setActiveTab('asignadas')
       
       setLoading(false)
     } catch (err) {
-      setError('Error al aceptar la diligencia. Por favor, intenta nuevamente.')
+      setError(err.message || 'Error al aceptar la diligencia. Por favor, intenta nuevamente.')
       console.error('Error:', err)
       setLoading(false)
     }
@@ -235,6 +245,12 @@ function GestorDashboard() {
                 mensaje="Activa tu disponibilidad para ver diligencias disponibles." 
               />
             )}
+            {disponible && diligenciasAsignadas.length > 0 && (
+              <Message 
+                tipo="info" 
+                mensaje={`Ya tienes ${diligenciasAsignadas.length} diligencia(s) en progreso. Completa la diligencia actual antes de aceptar otra.`} 
+              />
+            )}
             {disponible && diligenciasDisponiblesFiltradas.length === 0 && diligenciasDisponibles.length === 0 && (
               <p className="gestor-dashboard__empty">
                 No hay diligencias disponibles en este momento.
@@ -247,18 +263,22 @@ function GestorDashboard() {
             )}
             {disponible && diligenciasDisponiblesFiltradas.length > 0 && (
               <div className="gestor-dashboard__grid">
-                {diligenciasDisponiblesFiltradas.map(diligencia => (
-                  <div key={diligencia.id} className="gestor-dashboard__card-wrapper">
-                    <DiligenciaCard diligencia={diligencia} />
-                    <button
-                      className="gestor-dashboard__accept-button"
-                      onClick={() => handleAceptarDiligencia(diligencia.id)}
-                      disabled={loading}
-                    >
-                      Aceptar Diligencia
-                    </button>
-                  </div>
-                ))}
+                {diligenciasDisponiblesFiltradas.map(diligencia => {
+                  const tieneDiligenciaActiva = diligenciasAsignadas.length > 0
+                  return (
+                    <div key={diligencia.id} className="gestor-dashboard__card-wrapper">
+                      <DiligenciaCard diligencia={diligencia} />
+                      <button
+                        className={`gestor-dashboard__accept-button ${tieneDiligenciaActiva ? 'gestor-dashboard__accept-button--disabled' : ''}`}
+                        onClick={() => handleAceptarDiligencia(diligencia.id)}
+                        disabled={loading || tieneDiligenciaActiva}
+                        title={tieneDiligenciaActiva ? 'Completa tu diligencia actual antes de aceptar otra' : ''}
+                      >
+                        {tieneDiligenciaActiva ? 'Ya tienes una diligencia activa' : 'Aceptar Diligencia'}
+                      </button>
+                    </div>
+                  )
+                })}
               </div>
             )}
           </div>

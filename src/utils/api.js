@@ -1,6 +1,7 @@
 import axios from 'axios'
 import diligenciasData from '../data/diligencias.json'
 import gestoresData from '../data/gestores.json'
+import usuariosData from '../data/usuarios.json'
 
 // Simular delay de red
 const delay = (ms = 500) => new Promise(resolve => setTimeout(resolve, ms))
@@ -164,20 +165,51 @@ export const apiService = {
     }
   },
 
+  // Obtener un usuario por ID
+  async getUsuarioById(id) {
+    await delay(300)
+    const usuario = usuariosData.find(u => u.id === parseInt(id))
+    
+    if (!usuario) {
+      throw new Error('Usuario no encontrado')
+    }
+
+    return {
+      data: usuario,
+      status: 200
+    }
+  },
+
   // Aceptar una diligencia (asignar a un gestor)
   async aceptarDiligencia(diligenciaId, gestorId) {
     await delay(600)
     
-    // Obtener la diligencia y el gestor
+    // Obtener la diligencia
     const diligencia = diligenciasData.find(d => d.id === parseInt(diligenciaId))
-    const gestor = gestoresData.find(g => g.id === parseInt(gestorId))
     
     if (!diligencia) {
       throw new Error('Diligencia no encontrada')
     }
+
+    // Verificar si la diligencia ya está asignada
+    if (diligencia.gestor) {
+      throw new Error('Esta diligencia ya está asignada a otro gestor')
+    }
+
+    // Buscar el gestor en usuarios.json (donde están los gestores logueados)
+    const gestor = usuariosData.find(u => u.id === parseInt(gestorId) && u.tipo === 'gestor')
     
     if (!gestor) {
       throw new Error('Gestor no encontrado')
+    }
+
+    // Verificar si el gestor ya tiene diligencias activas (no completadas)
+    const diligenciasActivasDelGestor = diligenciasData.filter(
+      d => d.gestor && d.gestor.id === parseInt(gestorId) && d.estado !== 'completada'
+    )
+
+    if (diligenciasActivasDelGestor.length > 0) {
+      throw new Error('Ya tienes una diligencia en progreso. Completa la diligencia actual antes de aceptar otra.')
     }
 
     // Actualizar la diligencia (en producción esto actualizaría la base de datos)
@@ -187,9 +219,42 @@ export const apiService = {
       gestor: {
         id: gestor.id,
         nombre: gestor.nombre,
-        calificacion: gestor.calificacion,
+        calificacion: gestor.calificacion || 0,
         telefono: gestor.telefono
       }
+    }
+
+    return {
+      data: diligenciaActualizada,
+      status: 200
+    }
+  },
+
+  // Completar una diligencia
+  async completarDiligencia(diligenciaId, gestorId) {
+    await delay(600)
+    
+    // Obtener la diligencia
+    const diligencia = diligenciasData.find(d => d.id === parseInt(diligenciaId))
+    
+    if (!diligencia) {
+      throw new Error('Diligencia no encontrada')
+    }
+
+    // Verificar que la diligencia esté asignada al gestor
+    if (!diligencia.gestor || diligencia.gestor.id !== parseInt(gestorId)) {
+      throw new Error('No tienes permisos para completar esta diligencia')
+    }
+
+    // Verificar que la diligencia esté en progreso
+    if (diligencia.estado !== 'en-progreso') {
+      throw new Error('Solo se pueden completar diligencias en progreso')
+    }
+
+    // Actualizar la diligencia a completada
+    const diligenciaActualizada = {
+      ...diligencia,
+      estado: 'completada'
     }
 
     return {
