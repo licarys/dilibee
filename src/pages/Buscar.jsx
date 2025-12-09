@@ -49,7 +49,7 @@ function Buscar() {
   }
 
   const handleSearch = async (term) => {
-    const searchValue = term || searchTerm
+    const searchValue = term || ''
     setSearchTerm(searchValue)
     setLoading(true)
 
@@ -57,8 +57,9 @@ function Buscar() {
       const searchTermClean = searchValue.trim()
       
       if (searchTermClean === '') {
-        // Si el término está vacío, cargar todos los datos
+        // Si el término está vacío, cargar todos los datos y resetear pestaña
         await loadAllData()
+        setActiveTab('todos') // Resetear a la pestaña "Todos" al limpiar
         return
       }
       
@@ -92,7 +93,7 @@ function Buscar() {
         />
       </div>
 
-      {hasResults && (
+      {(hasResults || (!loading && diligencias.length === 0 && gestores.length === 0)) && (
         <div className="buscar__tabs">
           <button
             className={`buscar__tab ${activeTab === 'todos' ? 'buscar__tab--active' : ''}`}
@@ -132,28 +133,32 @@ function Buscar() {
           </p>
         )}
 
-        {!loading && hasResults && (
+        {!loading && (
           <>
-            {(activeTab === 'todos' || activeTab === 'diligencias') && diligencias.length > 0 && (
-              <div className="buscar__section">
-                <h2 className="buscar__section-title">Diligencias ({diligencias.length})</h2>
-                <div className="buscar__grid">
-                  {diligencias.map(diligencia => (
-                    <DiligenciaCard key={diligencia.id} diligencia={diligencia} />
-                  ))}
-                </div>
-              </div>
-            )}
+            {hasResults && (
+              <>
+                {(activeTab === 'todos' || activeTab === 'diligencias') && diligencias.length > 0 && (
+                  <div className="buscar__section">
+                    <h2 className="buscar__section-title">Diligencias ({diligencias.length})</h2>
+                    <div className="buscar__grid">
+                      {diligencias.map(diligencia => (
+                        <DiligenciaCard key={diligencia.id} diligencia={diligencia} />
+                      ))}
+                    </div>
+                  </div>
+                )}
 
-            {(activeTab === 'todos' || activeTab === 'gestores') && gestores.length > 0 && (
-              <div className="buscar__section">
-                <h2 className="buscar__section-title">Gestores ({gestores.length})</h2>
-                <div className="buscar__grid">
-                  {gestores.map(gestor => (
-                    <GestorCard key={gestor.id} gestor={gestor} />
-                  ))}
-                </div>
-              </div>
+                {(activeTab === 'todos' || activeTab === 'gestores') && gestores.length > 0 && (
+                  <div className="buscar__section">
+                    <h2 className="buscar__section-title">Gestores ({gestores.length})</h2>
+                    <div className="buscar__grid">
+                      {gestores.map(gestor => (
+                        <GestorCard key={gestor.id} gestor={gestor} />
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </>
             )}
           </>
         )}
