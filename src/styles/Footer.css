@@ -70,14 +70,31 @@
 }
 
 .footer__social-link {
-  font-size: 1.5rem;
   text-decoration: none;
-  transition: transform 0.2s;
-  display: inline-block;
+  transition: transform 0.2s, opacity 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .footer__social-link:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
+  background-color: var(--bee-yellow);
+}
+
+.footer__social-icon {
+  width: 24px;
+  height: 24px;
+  fill: var(--soft-white);
+  transition: fill 0.2s;
+}
+
+.footer__social-link:hover .footer__social-icon {
+  fill: var(--carbon-black);
 }
 
 .footer__bottom {
