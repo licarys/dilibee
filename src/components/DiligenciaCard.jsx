@@ -34,6 +34,8 @@ function DiligenciaCard({ diligencia, hideActions = false }) {
   }
 
   return (
+
+    //console.log('Rendering DiligenciaCard for:', diligencia),
     <div className="diligencia-card">
       <div className="diligencia-card__header">
         <h3 className="diligencia-card__titulo">{diligencia.titulo}</h3>
@@ -41,7 +43,7 @@ function DiligenciaCard({ diligencia, hideActions = false }) {
           variant={diligencia.estado === 'completada' ? 'success' : diligencia.estado === 'en-progreso' ? 'warning' : 'info'}
           size="small"
         >
-          {diligencia.estado.replace('-', ' ')}
+          {diligencia.estado ? diligencia.estado.replace('-', ' ') : 'Desconocido'}
         </Badge>
       </div>
       
@@ -58,7 +60,7 @@ function DiligenciaCard({ diligencia, hideActions = false }) {
         </div>
         <div className="diligencia-card__campo">
           <span className="diligencia-card__label">Precio:</span>
-          <span className="diligencia-card__precio">${diligencia.precio.toLocaleString('es-MX')} MXN</span>
+          <span className="diligencia-card__precio">${diligencia.precio ? diligencia.precio.toLocaleString('es-MX') : '0'} MXN</span>
         </div>
       </div>
 
