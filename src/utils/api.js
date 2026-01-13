@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-// API base - ahora apunta al backend de Node.js/Express
+// API base - ahora apunta al backend de Azure
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: 'https://dilibeex.azurewebsites.net/api',
   timeout: 10000,
 })
 
