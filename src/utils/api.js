@@ -4,7 +4,29 @@ import axios from 'axios'
 const api = axios.create({
   baseURL: 'https://dilibeex.azurewebsites.net/api',
   timeout: 10000,
+  headers: {
+    'Cache-Control': 'no-cache, no-store, must-revalidate',
+    'Pragma': 'no-cache',
+    'Expires': '0'
+  }
 })
+
+// Interceptor para agregar timestamp a las peticiones GET y evitar caché
+api.interceptors.request.use(
+  (config) => {
+    // Agregar timestamp a las peticiones GET para evitar caché
+    if (config.method === 'get') {
+      config.params = {
+        ...config.params,
+        _t: Date.now()
+      }
+    }
+    return config
+  },
+  (error) => {
+    return Promise.reject(error)
+  }
+)
 
 // Interceptor para manejar errores
 api.interceptors.response.use(
