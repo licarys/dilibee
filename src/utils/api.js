@@ -1,13 +1,22 @@
 import axios from 'axios'
 
 // API base - ahora apunta al backend de Azure
+// Usar URL absoluta completa para evitar que Vercel intercepte las peticiones
+const API_BASE_URL = 'https://dilibeex.azurewebsites.net/api'
+
 const api = axios.create({
-  baseURL: 'https://dilibeex.azurewebsites.net/api',
+  baseURL: API_BASE_URL,
   timeout: 10000,
   headers: {
     'Cache-Control': 'no-cache, no-store, must-revalidate',
     'Pragma': 'no-cache',
-    'Expires': '0'
+    'Expires': '0',
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+  // Asegurar que las peticiones sean absolutas
+  validateStatus: function (status) {
+    return status >= 200 && status < 300
   }
 })
 
@@ -21,6 +30,13 @@ api.interceptors.request.use(
         _t: Date.now()
       }
     }
+    
+    // Log para debugging (solo en desarrollo)
+    if (import.meta.env.DEV) {
+      const fullUrl = config.baseURL + (config.url.startsWith('/') ? config.url : '/' + config.url)
+      console.log('API Request:', config.method?.toUpperCase(), fullUrl)
+    }
+    
     return config
   },
   (error) => {
@@ -28,11 +44,25 @@ api.interceptors.request.use(
   }
 )
 
-// Interceptor para manejar errores
+// Interceptor para validar respuestas y detectar HTML (cuando Vercel intercepta)
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    // Verificar si la respuesta es HTML en lugar de JSON
+    const contentType = response.headers['content-type'] || ''
+    if (contentType.includes('text/html')) {
+      console.error('Error: Se recibió HTML en lugar de JSON. La petición fue interceptada por Vercel.')
+      console.error('URL solicitada:', response.config.url)
+      console.error('Base URL:', response.config.baseURL)
+      throw new Error('La API devolvió HTML en lugar de JSON. Verifica que las peticiones vayan directamente a Azure.')
+    }
+    return response
+  },
   (error) => {
     console.error('Error en API:', error)
+    // Si el error tiene una respuesta HTML, informarlo
+    if (error.response && error.response.headers && error.response.headers['content-type']?.includes('text/html')) {
+      console.error('Error: La respuesta del servidor es HTML. Posible problema de routing en Vercel.')
+    }
     return Promise.reject(error)
   }
 )
