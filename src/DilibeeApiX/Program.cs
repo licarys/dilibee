@@ -16,28 +16,31 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 // -------------------------------------
 // CORS
 // -------------------------------------
+#region Cors
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(policy =>
-        policy.WithOrigins("http://localhost:5173", "http://localhost:3000")
-              .AllowAnyHeader()
-              .AllowAnyMethod()
-              .AllowCredentials());
+    options.AddPolicy("CorsPolicy",
+        builder => builder
+            .SetIsOriginAllowed((host) => true)
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials());
 });
+#endregion
 
 var app = builder.Build();
 
-app.UseCors();
+app.UseCors("CorsPolicy");
 
 // -------------------------------------
 // SIMPLE CSP HEADER
 // -------------------------------------
-app.Use(async (ctx, next) =>
-{
-    ctx.Response.Headers["Content-Security-Policy"] =
-        "default-src 'self'; connect-src 'self' http://localhost:* ws://localhost:*";
-    await next();
-});
+//app.Use(async (ctx, next) =>
+//{
+//    ctx.Response.Headers["Content-Security-Policy"] =
+//        "default-src 'self'; connect-src 'self' http://localhost:* ws://localhost:*";
+//    await next();
+//});
 
 // -------------------------------------
 // DILIGENCIAS
